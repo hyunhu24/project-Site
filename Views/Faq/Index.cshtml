@@ -1,0 +1,28 @@
+﻿@model List<BRILLIANT_NFT_MARKET_FRONT.Models.Faq_Dto>
+<div id="faq">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">FAQ</h1>
+				<div class="faq">
+					<div class="contents">
+						@for (int i = 0; i < Model.Count; i++)
+						{
+							<div class="faqtitle">
+								<span>Q.</span>
+								<p>@Html.Raw(Model[i].QUESTION_CONTENTS)</p>
+							</div>
+							<div class="answer">
+								<div class="answerBox">
+									<span>A.</span>
+									<p>@Html.Raw(Model[i].ANSWER_CONTENTS)</p>
+								</div>
+							</div>
+						}
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

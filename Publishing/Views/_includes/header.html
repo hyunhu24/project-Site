@@ -1,0 +1,117 @@
+<div class="tebletPc-cover">
+	<div class="TebletPcGnb">
+		<ul class="menuList">
+			<!-- 해당 페이지에 접속한 경우 .active 추가 -->
+			<li><a class="active" href="/Publishing/Views/work/notice.html">notice</a></li>
+			<li><a href="/Publishing/Views/work/faq.html">FAQ</a></li>
+			<li class="inside-logo">
+				<img class="logo" onclick="location.href='/Publishing/Views/work/index.html'" src="/images/text-logo.png" alt="logo" />
+			</li>
+			<!-- <li><a href="/Publishing/Views/work" data-toggle="modal" data-target="#loginModal">login</a></li>
+			<li><a href="/Publishing/Views/auth/join.html">join</a></li> -->
+
+			<!-- login 했을때 메뉴 변경 -->
+			<li><a href="/Publishing/Views/work/myInfo.html">my</a></li>
+			<li><a href="#none">logout</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="moblie-cover">
+	<img class="logo" onclick="location.href='/Publishing/Views/work/index.html'" src="/images/text-logo.png" alt="logo" />
+
+	<div class="MoblieGnb">
+		<div class="material-icons g-icon-btn hamburger">menu</div>
+		<div class="side-menu">
+			<div class="clickClose"></div>
+			<div class="menu-contents">
+				<div class="material-icons g-icon-btn closeSideMenu">close</div>
+				<ul class="menuList">
+					<!-- 해당 페이지에 접속한 경우 .active 추가 -->
+					<li><a class="active" href="/Publishing/Views/work/notice.html">notice</a></li>
+					<li><a href="/Publishing/Views/work/faq.html">FAQ</a></li>
+					<li><a href="/Publishing/Views/work/myInfo.html">my</a></li>
+				</ul>
+
+				<div class="typeLogin">
+					<button type="button" class="g-btn outline" onclick="location.href='/Publishing/Views/auth/join.html'">Join</button>
+					<button type="button" class="g-btn loginModal-open" data-toggle="modal" data-target="#loginModal">Login</button>
+				</div>
+				<div class="typeLogout hide">
+					<button type="button" class="g-btn outline">Logout</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function () {
+		$(".side-menu").hide();
+
+		// 모바일 햄버거 메뉴
+		$(".hamburger").click(function () {
+			$(this).next(".side-menu").fadeIn();
+			$(this).next(".side-menu").find(".menu-contents").addClass("active");
+		});
+		$(".clickClose").click(function () {
+			$(this).parent(".side-menu").fadeOut();
+			$(this).next(".menu-contents").removeClass("active");
+		});
+		$(".g-icon-btn.closeSideMenu").click(function () {
+			$(this).parents(".side-menu").fadeOut();
+			$(this).parent(".menu-contents").removeClass("active");
+		});
+
+		$(".loginModal-open").click(function () {
+			$(this).parents(".side-menu").fadeOut();
+			$(this).parent(".menu-contents").removeClass("active");
+		});
+
+		$(function () {
+			$(".closeBtn").click(function () {
+				$("#noticeModal").fadeOut(function () {
+					$("#noticeModal").removeClass("show").addClass("hide");
+				});
+
+				// 오늘 하루 동안 보지 않기 체크박스가 체크되었을 때 쿠키를 설정합니다.
+				if ($("#test").prop("checked")) {
+					var currentDate = new Date();
+
+					currentDate.setDate(currentDate.getDate() + 1);
+
+					document.cookie = "hideModal=true; expires=" + currentDate.toUTCString() + "; path=/";
+				}
+			});
+
+			// 쿠키에서 모달 숨김 여부를 확인하여 모달을 보이거나 숨깁니다.
+			function checkCookie() {
+				var hideModalCookie = getCookie("hideModal");
+				if (hideModalCookie === "true") {
+					$("#noticeModal").hide();
+				}
+			}
+
+			// 쿠키 값을 가져오는 함수
+			function getCookie(cookieName) {
+				var name = cookieName + "=";
+				var decodedCookie = decodeURIComponent(document.cookie);
+				var cookieArray = decodedCookie.split(";");
+
+				for (var i = 0; i < cookieArray.length; i++) {
+					var cookie = cookieArray[i];
+					while (cookie.charAt(0) === " ") {
+						cookie = cookie.substring(1);
+					}
+					if (cookie.indexOf(name) === 0) {
+						return cookie.substring(name.length, cookie.length);
+					}
+				}
+				return "";
+			}
+
+			// 페이지 로드 시 쿠키를 확인하여 모달 상태를 설정합니다.
+			checkCookie();
+		});
+	});
+</script>

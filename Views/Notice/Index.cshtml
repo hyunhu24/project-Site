@@ -1,0 +1,21 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Default_Dto
+@{
+	List<Product_Dto>? productList = ViewData["productList"] as List<Product_Dto>;
+}
+<div id="notice">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">NOTICE</h1>
+				<div class="post-listBox">
+					<div class="classification-label">
+						<span>제목</span>
+						<span>등록일</span>
+					</div>
+					<div id="areaNoticeList"></div>
+				</div>
+				@await Html.PartialAsync("~/Views/Shared/_Pager.cshtml")
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,130 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Member_Dto
+<div id="myInfo">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">my</h1>
+				<div class="g-infoBox">
+					@await Html.PartialAsync("~/Views/Shared/_MyMenu.cshtml", viewData: new ViewDataDictionary(ViewData) { ["memberName"] = Model.MEMBER_NAME })
+					<div>
+						<div id="myInfoContents" class="g-tab-container">
+							<div class="tab-content active">
+								<div class="infoText">
+									<div class="g-title">아이디</div>
+									<div>@Model.MEMBER_ID</div>
+								</div>
+								<div class="infoText">
+									<div class="g-title">이름</div>
+									<div>@Model.MEMBER_NAME</div>
+								</div>
+								<div class="infoChange" id="areaViewMemberPassword">
+									<div class="infoText">
+										<div class="g-title">비밀번호</div>
+										<div id="areaMemberPassword">@(new string('＊', Model.MEMBER_PASSWORD!.Length))</div>
+									</div>
+									<div class="btnBox">
+										<button type="button" class="g-btn outline" id="btn_areaInputMemberPassword">비밀번호 변경</button>
+									</div>
+								</div>
+								<div class="infoChange hide" id="areaInputMemberPassword">
+									<div class="infoText">
+										<div class="g-title">비밀번호</div>
+									</div>
+									<div class="infoChangeForm">
+										<div class="g-input-box">
+											<label for="memberPassword" class="g-title">현재 비밀번호</label>
+											<input type="password" name="memberPassword" id="memberPassword" placeholder="현재 비밀번호 입력" maxlength="20" required />
+										</div>
+										<div class="g-input-box">
+											<label for="newPassword" class="g-title">새 비밀번호</label>
+											<input type="password" name="newPassword" id="newPassword" placeholder="새 비밀번호 입력" maxlength="20" required />
+										</div>
+										<div class="g-input-box">
+											<label for="newCheckPassword" class="g-title">새 비밀번호 확인</label>
+											<input type="password" name="newCheckPassword" id="newCheckPassword" placeholder="새 비밀번호 확인 입력" maxlength="20" required />
+										</div>
+									</div>
+									<div class="btnBoxChange">
+										<button type="button" class="g-btn monotone" id="btn_areaViewMemberPassword">취소</button>
+										<button type="button" class="g-btn btnEditMember" data-typecode="0001">확인</button>
+									</div>
+								</div>
+								<div class="infoChange" id="areaViewHpNumber">
+									<div class="infoText">
+										<div class="g-title">휴대폰 번호</div>
+										<div id="areaHpNumber">@Model.HP_NUMBER</div>
+									</div>
+									<div class="btnBox">
+										<button type="button" class="g-btn outline" id="btn_areaInputHpNumber">휴대폰 번호 변경</button>
+									</div>
+								</div>
+								<div class="infoChange hide" id="areaInputHpNumber">
+									<div class="infoText">
+										<div class="g-title">휴대폰 번호</div>
+									</div>
+									<div class="infoChangeForm">
+										<div class="g-input-box">
+											<input type="text" placeholder="휴대폰 번호 입력" name="hpNumber" id="hpNumber" maxlength="20" required />
+										</div>
+									</div>
+									<div class="btnBoxChange">
+										<button type="button" class="g-btn monotone" id="btn_areaViewHpNumber">취소</button>
+										<button type="button" class="g-btn btnEditMember" data-typecode="0002">확인</button>
+									</div>
+								</div>
+								<div class="infoChange" id="areaViewShippingAddress">
+									<div class="infoText">
+										<div class="g-title">배송지 주소</div>
+										<div id="areaShippingAddress">@Html.Raw(Model.SHIPPING_ADDRESS)</div>
+									</div>
+									<div class="btnBox">
+										<button type="button" class="g-btn outline" id="btn_areaInputShippingAddress">배송지 주소 변경</button>
+									</div>
+								</div>
+								<div class="infoChange hide" id="areaInputShippingAddress">
+									<div class="infoText">
+										<div class="g-title">배송지 주소</div>
+									</div>
+									<div class="infoChangeForm">
+										<div class="g-input-box">
+											<input type="text" placeholder="배송지 주소 입력" name="shippingAddress" id="shippingAddress" maxlength="100" required />
+										</div>
+									</div>
+									<div class="btnBoxChange">
+										<button type="button" class="g-btn monotone" id="btn_areaViewShippingAddress">취소</button>
+										<button type="button" class="g-btn btnEditMember" data-typecode="0003">확인</button>
+									</div>
+								</div>
+								<div class="infoChange" id="areaViewCoinAddress">
+									<div class="infoText">
+										<div class="g-title">지갑 주소</div>
+										<div id="areaCoinAddress">@Model.COIN_ADDRESS</div>
+									</div>
+									<div class="btnBox">
+										<button type="button" class="g-btn outline" id="btn_areaInputCoinAddress">지갑 주소 변경</button>
+									</div>
+								</div>
+								<div class="infoChange hide" id="areaInputCoinAddress">
+									<div class="infoText">
+										<div class="g-title">지갑 주소</div>
+									</div>
+									<div class="infoChangeForm">
+										<div class="g-input-box">
+											<input type="text" placeholder="지갑 주소입력" name="coinAddress" id="coinAddress" maxlength="42" />
+										</div>
+									</div>
+									<div class="btnBoxChange">
+										<button type="button" class="g-btn monotone" id="btn_areaViewCoinAddress">취소</button>
+										<button type="button" class="g-btn btnEditMember" data-typecode="0004">확인</button>
+									</div>
+								</div>
+								<button type="button" class="g-btn monotone" onclick="MovePath('/my/servicewithdrawal')">회원탈퇴</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" name="memberEditTypeCode" id="memberEditTypeCode" />

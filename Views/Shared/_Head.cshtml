@@ -1,0 +1,62 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Default_Dto
+@{
+    bool isDebug = (bool)Model.IS_DEBUG!;
+    bool isMobile = (bool)Model.IS_MOBILE!;
+    string jsFolder = Model.JS_FOLDER!;
+    int pageSize = (int)Model.PAGE_SIZE!;
+    string path = Model.PATH!;
+    string originalPath = Model.ORIGINAL_PATH!;
+    string serviceName = Model.SERVICE_NAME!;
+    int authEndMinutes = (int)Model.AUTH_END_MINUTES!;
+    string youtubeLink = Model.YOUTUBE_LINK!;
+    string instargramLink = Model.INSTARGRAM_LINK!;
+                      }
+<meta charset="UTF-8" />
+<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="robots" content="index,follow,noodp" />
+<meta name="googlebot" content="index,follow" />
+<meta name="google" value="notranslate" />
+<meta name="application-name" content="@serviceName" />
+<meta name="apple-mobile-web-app-title" content="@serviceName" />
+
+<link rel="stylesheet" type="text/css" href="~/lib/jquery-ui/dist/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/bootstrap-select/dist/css/bootstrap-select.min.css" />
+<link rel="stylesheet" type="text/css" href="~/lib/swiper/dist/css/swiper.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/site.min.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/swiper/dist/js/swiper.min.js"></script>
+<script src="~/lib/jquery-ui/dist/js/jquery-ui.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/popper.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/lib/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="~/lib/jquery-ui/dist/js/datepicker-ko.js"></script>
+<script src="~/lib/jquery-ui/dist/js/date-ko-KR.js"></script>
+
+<script type="text/javascript">
+    const _info = {
+        isDebug: JSON.parse(@isDebug.ToString()!.ToLower()),
+        isMobile: JSON.parse(@isMobile.ToString()!.ToLower()),
+        path: "@path",
+        pageSize: "@pageSize",
+        originalPath: "@originalPath",
+        authEndMinutes: parseInt("@authEndMinutes"),
+        youtubeLink: "@youtubeLink",
+        instargramLink: "@instargramLink"
+    }
+</script>
+<script type="text/javascript" src="/js/@(jsFolder)site.js" asp-append-version="true"></script>
+<script type="text/javascript" src="/js/@(jsFolder)call.js" asp-append-version="true"></script>
+<script type="text/javascript" src="/js/@(jsFolder)paging.js" asp-append-version="true"></script>
+<script type="text/javascript" src="/js/@(jsFolder)validation.js" asp-append-version="true"></script>
+
+<title>@serviceName</title>
+
+<div class="pageLoaging-bg hide">
+    <div class="spinner"></div>
+</div>

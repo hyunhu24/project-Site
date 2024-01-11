@@ -1,0 +1,134 @@
+<!-- 공지사항 / 추후 수정 -->
+<div class="modal fade" id="noticeModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content noticeModal">
+			<div class="modal-header">
+				<div class="popupTitle">공지사항</div>
+				<div class="flexBtn-box">
+					<button type="button" class="g-btn lightMonotone innerIcon closeBtn" data-dismiss="modal">
+						<span class="material-icons">close</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="textBox">
+					<p>
+						Mauris at eros a ex rhoncus mattis. In arcu arcu, accumsan in neque in, semper scelerisque nisi. Pellentesque sit amet libero
+						vel metus eleifend rutrum quis quis sem. Vivamus dolor leo, varius nec egestas convallis, lobortis in velit. Pellentesque
+						vestibulum neque dui, eget placerat sem vehicula nec. Morbi ac ante et eros dignissim sollicitudin in a orci. Sed erat ante,
+						mattis quis libero vitae, auctor varius dui. Sed mollis tempor eros, a vulputate mauris imperdiet nec. Sed mattis tristique
+						ante, eu finibus ipsum suscipit ac. Vestibulum a nisl eget lacus dictum vulputate auctor id orci. Morbi porttitor ultrices
+						ultrices
+					</p>
+					<p>
+						uis elementum nisi ut varius sodales. Donec nec dapibus quam. Etiam at mi sagittis, rhoncus purus non, vulputate velit. Mauris
+						justo odio, vestibulum et mollis non, commodo eget libero. Donec nec erat metus. Donec ultrices rhoncus sem non efficitur.
+						Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin pellentesque auctor nisl, in
+						faucibus odio ultrices eu. Nulla tristique rutrum lacus, sit amet lobortis est rutrum in. Sed aliquam, nibh nec rutrum tempus,
+						lacus felis iaculis ipsum, nec porttitor mi mi posuere magna. Nam in tincidunt lacus, a blandit tellus.
+					</p>
+					<p>
+						Mauris at eros a ex rhoncus mattis. In arcu arcu, accumsan in neque in, semper scelerisque nisi. Pellentesque sit amet libero
+						vel metus eleifend rutrum quis quis sem. Vivamus dolor leo, varius nec egestas convallis, lobortis in velit. Pellentesque
+						vestibulum neque dui, eget placerat sem vehicula nec. Morbi ac ante et eros dignissim sollicitudin in a orci. Sed erat ante,
+						mattis quis libero vitae, auctor varius dui. Sed mollis tempor eros, a vulputate mauris imperdiet nec. Sed mattis tristique
+						ante, eu finibus ipsum suscipit ac. Vestibulum a nisl eget lacus dictum vulputate auctor id orci. Morbi porttitor ultrices
+						ultrices
+					</p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div>
+					<div class="g-check-box">
+						<input id="test" type="checkbox" />
+						<label for="test"><span class="marker"></span>오늘 하루 보지 않기</label>
+					</div>
+				</div>
+				<button type="button" class="g-btn red closeBtn" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 로그인모달 -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content loginModal">
+			<div class="modal-header">
+				<div class="popupImg"><img src="/images/logo.png" alt="logo" /></div>
+				<div class="flexBtn-box">
+					<button type="button" class="g-btn lightMonotone innerIcon closeBtn" data-dismiss="modal">
+						<span class="material-icons">close</span>
+					</button>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="login-box">
+					<div class="g-input-box g-input-mb">
+						<label>아이디 / ID</label>
+						<input type="text"/>
+					</div>
+					<div class="g-input-box">
+						<label>비밀번호 / Password</label>
+						<input type="text"/>
+					</div>
+					<a href="#none" class="g-link findPW" onclick="location.href='/Publishing/Views/auth/passwordFind-email.html'">Find password</a>
+				</div>
+				<div class="loginBtn-box">
+					<button type="button" class="g-btn">Login</button>
+					<a href="#none" class="g-link" onclick="location.href='/Publishing/Views/auth/join.html'">Sign up</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="toastMessage withBtn">
+	<div class="d-flex align-items-center justify-content-between">
+		<div class="d-flex align-items-center">
+			<span class="material-icons">error</span>
+			<div>
+				<p>결제승인에 실패했습니다.</p>
+				<p>(실패 사유 : Text)</p>
+			</div>
+		</div>
+		<button type="button" class="g-btn lightMonotone">확인</button>
+	</div>
+</div> -->
+
+<!-- 하루만 안보이기 -->
+<script>
+	$(document).ready(function () {
+		// 스토리지 제어 함수 정의
+		var handleStorage = {
+			setStorage: function (name, date) {
+				localStorage.setItem(name, date);
+			},
+			getStorage: function (name) {
+				var now = new Date();
+				now = now.toDateString();
+				var storedDate = localStorage.getItem(name);
+
+				return storedDate === now;
+			},
+		};
+
+		if (handleStorage.getStorage("today")) {
+			$("#noticeModal").modal("hide");
+		} else {
+			$("#noticeModal").modal("show");
+		}
+
+		$("#test").on("change", function () {
+			if ($(this).is(":checked")) {
+				var now = new Date();
+				now = now.toDateString();
+				handleStorage.setStorage("today", now);
+			}
+		});
+
+		$("#noticeModal .closeBtn").click(function () {
+			$("#noticeModal").modal("hide");
+		});
+	});
+</script>

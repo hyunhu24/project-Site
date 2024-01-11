@@ -1,0 +1,82 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Member_Dto
+@{
+	string searchStartDay = Context.Request.Query["searchStartDay"]!;
+	string searchEndDay = Context.Request.Query["searchEndDay"]!;
+	searchStartDay = searchStartDay ?? DateTime.Now.AddDays(-6).ToString("yyyy-MM-dd");
+	searchEndDay = searchEndDay ?? DateTime.Now.ToString("yyyy-MM-dd");
+	string searchStateCode = Context.Request.Query["searchStateCode"]!;
+	string searchProductName = Context.Request.Query["searchProductName"]!;
+}
+<div id="myInfo">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">my</h1>
+				<div class="g-infoBox">
+					@await Html.PartialAsync("~/Views/Shared/_MyMenu.cshtml", viewData: new ViewDataDictionary(ViewData) { ["memberName"] = Model.MEMBER_NAME })
+					<div>
+						<div id="purchaseHistory" class="g-tab-container">
+							<div class="tab-content active">
+								<div class="content-box">
+									<div class="calender">
+										<div class="g-infoBox">
+											<div class="g-input-box">
+												<input autocomplete="off" type="text" class="resetStyle" id="searchStartDay" name="searchStartDay" value="@searchStartDay" />
+												<img src="/images/icon-calendar.png" alt="calendar" />
+											</div>
+											<div class="tilde">-</div>
+											<div class="g-input-box">
+												<input autocomplete="off" type="text" class="resetStyle" id="searchEndDay" name="searchEndDay" value="@searchEndDay" />
+												<img src="/images/icon-calendar.png" alt="calendar" />
+											</div>
+										</div>
+									</div>
+									<div class="select-info">
+										<div class="g-infoBox">
+											<div class="g-input-box selectpicker-w">
+												<select class="selectpicker" data-dropup-auto="false" data-display="static" data-width="100%" data-style="g-select" title="전체" name="searchStateCode" id="searchStateCode">
+													<option value="" selected>전체</option>
+													<option value="0001">입금대기</option>
+													<option value="0002">완료</option>
+													<option value="0003">취소</option>
+												</select>
+											</div>
+										</div>
+										<div class="g-infoBox">
+											<div class="g-input-box">
+												<input type="text" name="searchProductName" id="searchProductName" placeholder="상품명" value="@searchProductName" />
+											</div>
+										</div>
+									</div>
+									<div class="searchBox"><button type="button" class="g-btn" id="btnOrderListSearch">검색</button></div>
+								</div>
+								<div class="g-table-scroll">
+									<table class="g-table">
+										<thead>
+											<tr>
+												<th class="sumname">NFT</th>
+												<th>구매일</th>
+												<th class="w100">주문 번호</th>
+												<th class="w100">NFT 번호</th>
+												<th>금액</th>
+												<th>상태</th>
+											</tr>
+										</thead>
+										<tbody id="areaOrderList"></tbody>
+									</table>
+								</div>
+							</div>							
+						</div>
+					</div>
+				</div>
+				@await Html.PartialAsync("~/Views/Shared/_Pager.cshtml")
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	Calendar();
+
+	$("#searchStateCode").val("@searchStateCode").prop("selected", true);
+	$(".selectpicker").selectpicker("refresh");
+</script>

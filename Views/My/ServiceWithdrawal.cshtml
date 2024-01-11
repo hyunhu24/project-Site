@@ -1,0 +1,24 @@
+﻿<div id="deleteAccount">
+	<div class="g-container">
+		<div class="small-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">delete account</h1>
+				<div class="g-input-box">
+					<label>개인정보 처리방침</label>
+					<div class="textarea deleteAccount">
+						@await Html.PartialAsync("~/Views/Shared/_PrivacyPolicy.cshtml")
+					</div>
+				</div>
+				<div class="g-check-box">
+					<input id="isCheckServiceWithdrawal" type="checkbox" />
+					<label for="isCheckServiceWithdrawal"><span class="marker"></span>동의</label>
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="memberPassword">비밀번호 입력</label>
+					<input type="password" name="memberPassword" id="memberPassword" placeholder="비밀번호 입력" maxlength="20" required />
+				</div>
+				<button type="button" class="g-btn pageLastBtn" id="btnServiceWithdrawal">탈퇴</button>
+			</div>
+		</div>
+	</div>
+</div>

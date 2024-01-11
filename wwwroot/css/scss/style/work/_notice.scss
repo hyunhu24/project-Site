@@ -1,0 +1,66 @@
+#notice {
+	.post-listBox {
+		.classification-label {
+			display: none;
+		}
+		.post {
+			padding: 0.8rem 0;
+			border-bottom: 1px solid $sectionDivider;
+			cursor: pointer;
+			.title {
+				width: 100%;
+				overflow: hidden;
+				@include font($grey00, 1.6rem, $bold, 2.4rem);
+				letter-spacing: -0.24px;
+				text-overflow: ellipsis;
+			}
+			.date {
+				@include font($grey02, 1.4rem, $regular, 2rem);
+				letter-spacing: -0.14px;
+			}
+		}
+		.no-history {
+			@include font($grey00, 1.6rem, $bold, 2.4rem);
+			letter-spacing: -0.24px;
+			text-align: center;
+			padding: 1.6rem;
+		}
+
+		@include tablet_S {
+			.classification-label {
+				@include flexVC_b;
+				border-top: 1px solid $borderDividerDark;
+				border-bottom: 1px solid $borderDividerDark;
+				span {
+					@include font($grey00, 1.6rem, $bold, 2.4rem);
+					letter-spacing: -0.24px;
+					padding: 0.8rem 1.2rem;
+					&:last-of-type {
+						width: 9rem;
+						max-width: 9rem;
+						text-align: center;
+					}
+				}
+			}
+			.post {
+				@include flexVC_b;
+				padding: 0;
+				.title {
+					font-size: 1.8rem;
+					line-height: 2.8rem;
+					letter-spacing: -0.27px;
+					padding: 1.6rem 1.2rem;
+				}
+				.date {
+					width: 9rem;
+					max-width: 9rem;
+					font-size: 1.6rem;
+					line-height: 2.4rem;
+					letter-spacing: -0.16px;
+					text-align: center;
+					padding: 1.6rem 1.2rem;
+				}
+			}
+		}
+	}
+}

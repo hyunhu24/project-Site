@@ -1,0 +1,64 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Default_Dto
+@{
+	bool isLogin = (bool)Model.IS_LOGIN!;
+	string path = Model.PATH!;
+}
+<header>
+	<div class="tebletPc-cover">
+		<div class="TebletPcGnb">
+			<ul class="menuList">
+				<li><a href="/notice" @(path.IndexOf("/notice") != -1 ? "class=active" : "")>notice</a></li>
+				<li><a href="/faq" @(path.Equals("/faq") ? "class=active" : "")>FAQ</a></li>
+				<li class="inside-logo"><img class="logo btnHome" src="/images/text-logo.png" alt="logo" /></li>
+				@if (isLogin)
+				{
+					<li><a href="/my" @(path.IndexOf("/my") != -1 ? "class=active" : "")>my</a></li>
+					<li><a class="btnLogout">logout</a></li>
+				}
+				else
+				{
+					<li><a class="btnLoginModal">login</a></li>
+					<li><a href="/signup">join</a></li>
+				}
+			</ul>
+		</div>
+	</div>
+	<div class="moblie-cover">
+		<img class="logo btnHome" src="/images/text-logo.png" alt="logo" />
+		<div class="MoblieGnb">
+			<div class="material-icons g-icon-btn hamburger">menu</div>
+			<div class="side-menu">
+				<div class="clickClose"></div>
+				<div class="menu-contents">
+					<div class="material-icons g-icon-btn closeSideMenu">close</div>
+					<ul class="menuList">
+						<li><a href="/notice" @(path.IndexOf("/notice") != -1 ? "class=active" : "")>notice</a></li>
+						<li><a href="/faq" @(path.Equals("/faq") ? "class=active" : "")>FAQ</a></li>
+						@if (isLogin)
+						{
+							<li><a href="/my" @(path.IndexOf("/my") != -1 ? "class=active" : "")>my</a></li>
+						}
+					</ul>
+					@if (isLogin)
+					{
+						<div class="typeLogout">
+							<button type="button" class="g-btn outline btnLogout">Logout</button>
+						</div>
+					}
+					else
+					{
+						<div class="typeLogin">
+							<button type="button" class="g-btn outline" onclick="MovePath('/signup')">Join</button>
+							<button type="button" class="g-btn loginModal-open btnLoginModal">Login</button>
+						</div>						
+					}					
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<script>
+	$(function () {
+		MobileMenu();
+	});
+</script>

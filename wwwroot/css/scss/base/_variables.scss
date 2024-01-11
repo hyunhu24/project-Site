@@ -1,0 +1,76 @@
+// breakpoints
+$bpSmall: 360px;
+$bpMedium: 768px;
+$bpMedium_bigger: 1024px;
+$bpLarge: 1280px;
+$bpHuge: 1440px;
+
+// font weights
+$regular: 400;
+$thin: $regular - 200;
+$light: $regular - 100;
+$medium: $regular + 100;
+$bold: $regular + 200;
+$bolder: $regular + 300;
+$fblack: $regular + 400;
+$extra: $regular + 500;
+
+// header, footer height
+$headerTabletPc: 10.8rem;
+$headerMobile: 6.4rem;
+$footerTabletPc: 54.8rem;
+$footerMobile: 58rem;
+
+// color code
+$black: #000000;
+$white: #ffffff;
+
+$red: #ff0000;
+$complete: #00a091;
+$error: #ff5c00;
+$warning: #ff3535;
+$info: #007aea;
+
+$bg00: #ffffff;
+$bg01: #fbfbfb;
+$bg02: #1f1f21;
+$headerBg: #ffffff;
+$footerBg: #ffffff;
+$descriptionBg: rgba(0, 0, 0, 0.2);
+$modalBg: rgba(0, 0, 0, 0.7);
+
+$link: #222222;
+$linkHvr: #333333;
+
+$grey00: #222222;
+$grey01: #4e4e4e;
+$grey02: #7a7a7a;
+$grey03: #a7a7a7;
+$grey04: #d3d3d3;
+
+$primary: #222222;
+$primaryBtn: #222222;
+$primaryBtnHover: #333333;
+$monotoneBtn: #efefef;
+$monotoneBtnHover: #dedede;
+$lightMonotoneBtn: #f7f7f7;
+$lightMonotoneBtnHover: #f0f0f0;
+
+$sectionDivider: rgba(0, 0, 0, 0.03);
+$borderDividerLight: rgba(0, 0, 0, 0.05);
+$borderDividerDark: #222222;
+
+$inputBorderDefault: rgba(255, 255, 255, 0.05);
+$inputBorderHover: #00a3ff;
+$inputBorderFocus: #00a3ff;
+$inputBorderIncorrect: #ff3535;
+$inputLabelLight: #ffffff;
+$inputTxtLight: #bec1c2;
+$inputTxtDark: #464747;
+$inputTxtDisabled: #4e4e4e;
+$inputBgDefault: rgba(0, 0, 0, 0.03);
+$inputBgDisabled: rgba(0, 0, 0, 0.08);
+
+$inputShadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
+
+$toastError: #ff5c00;

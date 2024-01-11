@@ -1,0 +1,135 @@
+﻿@{
+	Product_Dto? productInfo = ViewData["productInfo"] as Product_Dto;
+	Member_Dto? memberInfo = ViewData["memberInfo"] as Member_Dto;
+	bool? isCancel = ViewData["isCancel"] as bool?;
+	string? errorMessage = ViewData["errorMessage"] as string;
+	var shippingAddress = Html.Raw(memberInfo!.SHIPPING_ADDRESS!);
+}
+<div id="detailBuy">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">purchase</h1>
+				<div class="g-infoBox">
+					<div class="productInfo">
+						<div class="title">상품 정보</div>
+						<div class="contentBox">
+							<div class="leftbox" onclick="MovePath('/Product/Info/@productInfo!.PRODUCT_IDX')">
+								<div class="productimg"><img src="@productInfo.THUMBNAIL_IMAGE_URL" alt="detail img" /></div>
+								<div class="textbox">
+									<h1>@productInfo!.PRODUCT_NAME</h1>
+									<span>@Function.SetComma(productInfo.AMOUNT.ToString()!)￦</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buyerInfo">
+						<div class="title">구매자 정보</div>
+						<div class="infoText">
+							<div class="g-title">이름</div>
+							<div>@memberInfo!.MEMBER_NAME</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">이메일</div>
+							<div>@memberInfo.MEMBER_ID</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">연락처</div>
+							<div>@memberInfo.HP_NUMBER</div>
+						</div>
+					</div>
+					<div class="deliveryInfo">
+						<div class="infoTitle">
+							<div class="title">배송 정보</div>
+							<div class="g-check-box">
+								<input id="isDefaultShippingAddress" type="checkbox" checked />
+								<label for="isDefaultShippingAddress"><span class="marker"></span>기본 주소지</label>
+							</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">기본 배송지 주소</div>
+							<div id="areaDefaultShippingAddress">@shippingAddress</div>
+						</div>
+						<div class="g-input-box">
+							<label for="shippingAddress" class="g-title">배송지 주소</label>
+							<input type="text" name="shippingAddress" id="shippingAddress" value="@shippingAddress" maxlength="100" readonly required />
+						</div>
+					</div>
+					<div class="payInfo">
+						<div class="title">결제 정보</div>
+						@*<div class="infoText">
+							<div class="g-title">수량</div>
+							<div>@productInfo.QUANTITY 개</div>
+						</div>*@
+						<div class="infoText">
+							<div class="g-title">금액 / Amount</div>
+							<div>@Function.SetComma((productInfo.AMOUNT).ToString()!)￦</div>
+						</div>
+						<div class="payContents">
+							<div class="g-title">결제 방법 / Payment Method</div>
+							<div class="payChoose">
+								<div>
+									<ul class="tab-row">
+										<li class="g-radio orderTypeInfo_0001 active">
+											<input id="orderTypeCode_0001" type="radio" name="orderTypeCode" value="0001" data-num="bank" checked />
+											<label for="orderTypeCode_0001"><span class="marker"></span>무통장 입금 / Bank Transfer</label>
+										</li>
+										<li class="g-radio orderTypeInfo_0002">
+											<input id="orderTypeCode_0002" type="radio" name="orderTypeCode" value="0002" data-num="paypal" />
+											<label for="orderTypeCode_0002"><span class="marker"></span>페이팔 / PayPal</label>
+										</li>
+									</ul>
+									<div class="tab-content one orderTypeInfo_0001 active">
+										<div class="payTextBox">
+											<div id="areaBankName">은행 / Bank : @productInfo.BANK_NAME</div>
+											<div id="areaAccountOwner">예금주 / Account Holder : @productInfo.ACCOUNT_OWNER</div>
+											<div id="areaAccountNumber">계좌번호 / Account Number : @productInfo.ACCOUNT_NUMBER</div>
+										</div>
+										<div class="g-input-box">
+											<label for="depositName">입금자명 / Depositor's Name</label>
+											<input type="text" name="depositName" id="depositName" value="@memberInfo.MEMBER_NAME" maxlength="10" required />
+										</div>
+									</div>
+									<div class="tab-content payTextBox two orderTypeInfo_0002">
+										<div><img src="/images/Btn_paypal.png" alt="paypal img" onclick="Payment()" /></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button type="button" id="bank" class="g-btn pageLastBtn bankbook orderTypeInfo_0001 active" onclick="Payment()">구매 / Purchase</button>
+				<button type="button" id="paypal" class="g-btn paypall pageLastBtn orderTypeInfo_0002" disabled>구매 / Purchase</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="toastMessage withBtn" style="display: none;">
+	<div class="d-flex align-items-center justify-content-between">
+		<div class="d-flex align-items-center">
+			<span class="material-icons">error_outline</span>
+			<div class="textBox">
+				<p>결제에 실패했습니다.</p>
+				<p>(실패 사유 : @errorMessage)</p>
+			</div>
+		</div>
+		<button type="button" class="g-btn lightMonotone toastGbtn">확인</button>
+	</div>
+</div>
+<input type="hidden" name="productIdx" id="productIdx" value="@productInfo.PRODUCT_IDX" />
+@*<input type="hidden" name="quantity" id="quantity" value="@productInfo.QUANTITY" />*@
+<input type="hidden" name="paymentType" id="paymentType" />
+<input type="hidden" name="bankName" id="bankName" value="@productInfo.BANK_NAME" />
+<input type="hidden" name="accountOwner" id="accountOwner" value="@productInfo.ACCOUNT_OWNER"/>
+<input type="hidden" name="accountNumber" id="accountNumber" value="@productInfo.ACCOUNT_NUMBER" />
+<input type="hidden" id="isCancel" value="@isCancel.ToString()!.ToLower()" />
+<script type="text/javascript">
+	$(function () {
+		CheckOrderCancel();
+
+		setTimeout(function () {
+			ShippingAddressControl();
+			OrderTypeControl();
+		}, 100);
+	});
+</script>

@@ -1,0 +1,75 @@
+﻿<div id="join">
+	<div class="g-container">
+		<div class="small-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">join</h1>
+				@await Html.PartialAsync("~/Views/Shared/_Auth.cshtml", viewData: new ViewDataDictionary(ViewData) { ["purposeCode"] = "0001" })
+				<div class="g-input-box g-input-mb">
+					<label for="memberPassword">비밀번호 / Password<strong>*</strong></label>
+					<input type="password" name="memberPassword" id="memberPassword" maxlength="20" required />
+					<div class="inputInfoText">영문, 숫자, 특수문자를 포함한 8~12자 <br>Require 8-12 character, number, symbol</div>
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="checkMemberPassword">비밀번호확인 / Check Password<strong>*</strong></label>
+					<input type="password" id="checkMemberPassword" maxlength="20" required />
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="memberName">이름 / Name<strong>*</strong></label>
+					<input type="text" name="memberName" id="memberName" maxlength="20" required />
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="hpNumber">휴대폰 번호(숫자만 입력) / Number(Only Number)<strong>*</strong></label>
+					<input type="tel" name="hpNumber" id="hpNumber" maxlength="20" required />
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="shippingAddress">배송지 주소 / Address<strong>*</strong></label>
+					<input type="text" name="shippingAddress" id="shippingAddress" maxlength="100" required />
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label for="coinAddress">지갑 주소 / Wallet address
+						<span class="qrCheck">
+							<span class="material-symbols-outlined hoverIcon">help</span>
+							<b>APP</b>
+							<img class="qrImg" src="/images/app_qrcode.png" alt="app_qrcode">
+						</span>
+					</label>
+					<input type="text" name="coinAddress" id="coinAddress" maxlength="42" />
+					<div class="infoTextBox">
+						<span class="material-symbols-outlined warningIcon">info</span>
+						<div class="infoText">
+							<div class="infoText">
+								If you already have a wallet address, please enter your existing wallet address. If wallet creation is needed, leave it blank and create a wallet separately within the BerryPie app for automatic integration.<br /><br />
+								지갑 주소가 이미 존재하는 경우, 소유 중인 지갑 주소를 입력해 주세요.<span></span>지갑 생성이 필요한 경우 빈칸으로 놔두시고 베리파이 앱에서 별도로 지갑을 생성하면 자동 연동됩니다.
+							</div>
+						</div>
+					</div>
+					<a href="/DownloadBerryPieGuide" class="g-btn outline guideBtn">
+						<span class="material-symbols-outlined">download</span>
+						BerryPie getting started guide
+					</a>
+				</div>
+				<div class="g-input-box g-input-mb">
+					<label>이용약관 / Terms of Use<strong>*</strong></label>
+					<div class="textarea">
+						@await Html.PartialAsync("~/Views/Shared/_TermsOfUse.cshtml")
+					</div>
+					<div class="g-check-box">
+						<input id="checkTermsOfUse" type="checkbox" />
+						<label for="checkTermsOfUse"><span class="marker"></span>동의 / Agree</label>
+					</div>
+				</div>
+				<div class="g-input-box">
+					<label>개인정보 처리방침 / Privacy policy<strong>*</strong></label>
+					<div class="textarea">
+						@await Html.PartialAsync("~/Views/Shared/_PrivacyPolicy.cshtml")
+					</div>
+				</div>
+				<div class="g-check-box">
+					<input id="checkPrivacyPolicy" type="checkbox" />
+					<label for="checkPrivacyPolicy"><span class="marker"></span>동의 / Agree</label>
+				</div>
+				<button type="button" id="btnSignup" class="g-btn pageLastBtn">Join</button>
+			</div>
+		</div>
+	</div>
+</div>

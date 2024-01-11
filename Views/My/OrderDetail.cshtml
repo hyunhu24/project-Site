@@ -1,0 +1,139 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Order_Dto
+@{
+	int tokenId = (int)Model.TOKEN_ID!;
+}
+<div id="myPurchaseDetail">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">purchase detail</h1>
+
+				<div class="g-infoBox">
+					<div class="buyerInfo">
+						<div class="title">주문 정보</div>
+						<div class="infoText">
+							<div class="g-title">NFT 번호</div>
+							<div>@(tokenId > 0 ? "#" + tokenId : "-")</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">주문 번호</div>
+							<div>@Model.ORDER_NUMBER</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">일시</div>
+							<div>@Model.INS_DATE</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">상태</div>
+							<div><span>@Model.STATE_CODE_NAME</span></div>
+						</div>
+					</div>
+					<div class="productInfo">
+						<div class="title">상품 정보</div>
+						<div class="contentBox">
+							<div class="leftbox" onclick="MovePath('/Product/Info/@Model.PRODUCT_IDX')">
+								<div class="productimg"><img src="@Model.THUMBNAIL_IMAGE_URL" alt="detail img" /></div>
+								<div class="textbox">
+									<h1>@Model.PRODUCT_NAME</h1>
+									<span>@Model.PRODUCT_AMOUNT￦</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buyerInfo">
+						<div class="title">구매자 정보</div>
+						<div class="infoText">
+							<div class="g-title">이름</div>
+							<div>@Model.MEMBER_NAME</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">이메일</div>
+							<div>@Model.MEMBER_ID</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">연락처</div>
+							<div>@Model.HP_NUMBER</div>
+						</div>
+					</div>
+					<div class="deliveryInfo">
+						<div class="infoTitle">
+							<div class="title">배송 정보</div>
+						</div>
+						<div class="infoText">
+							<div class="g-title">배송지 주소</div>
+							<div>@Html.Raw(Model.SHIPPING_ADDRESS)</div>
+						</div>
+					</div>
+
+					@if (Model.ORDER_TYPE_CODE == "0001")
+					{
+						<div class="payInfo">
+							<div class="title">결제 정보</div>
+					@*		<div class="infoText">
+								<div class="g-title">수량</div>
+								<div>@Model.QUANTITY 개</div>
+							</div>*@
+							<div class="infoText">
+								<div class="g-title">금액</div>
+								<div>@Function.SetComma(Model.ORDER_AMOUNT.ToString()!)￦</div>
+							</div>
+
+							<div class="payContents">
+								<div class="g-title">결제 방법</div>
+								<div class="payChoose">
+									<div>
+										<div class="tab-content active">
+											<div class="g-title">무통장 입금</div>
+											<div class="payTextBox">
+												<div>
+													<div>은행</div>
+													<span>@Model.BANK_NAME</span>
+												</div>
+												<div>
+													<div>예금주</div>
+													<span>@Model.ACCOUNT_OWNER</span>
+												</div>
+												<div>
+													<div>계좌번호</div>
+													<span>@Model.ACCOUNT_NUMBER</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="infoText">
+								<div class="g-title">입금자명</div>
+								<div>@Model.DEPOSIT_NAME</div>
+							</div>
+						</div>
+					}
+					else
+					{
+						<div class="payInfo">
+							<div class="title">결제 정보</div>
+							@*<div class="infoText">
+								<div class="g-title">수량</div>
+								<div>@Model.QUANTITY 개</div>
+							</div>*@
+							<div class="infoText">
+								<div class="g-title">금액</div>
+								<div>@Function.SetComma(Model.ORDER_AMOUNT.ToString()!)￦</div>
+							</div>
+
+							<div class="infoText">
+								<div class="g-title">결제방법</div>
+								<div>페이팔</div>
+							</div>
+						</div>
+					}
+				</div>
+
+				<button type="button" class="g-btn monotone active" onclick="MovePath('/My/OrderList')">
+					목록으로
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

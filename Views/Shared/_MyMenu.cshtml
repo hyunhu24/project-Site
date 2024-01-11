@@ -1,0 +1,17 @@
+﻿@{
+	string path = Context.Request.Path.ToString().ToLower();
+	string? memberName = ViewData["memberName"] as string;
+}
+<div class="productInfo">
+	<div class="payTextBox">
+		<div>소중한 <span>@memberName</span> 님 환영합니다!</div>
+	</div>
+</div>
+<ul class="g-tab-row">
+	<li class="tabBtn@(path.Equals("/my") ? " active" : "")" onclick="MovePath('/my')">
+		<div>내 정보</div>
+	</li>
+	<li class="tabBtn@(path.Equals("/my/orderlist") ? " active" : "")" onclick="MovePath('/my/orderlist')">
+		<div>구매 내역</div>
+	</li>
+</ul>

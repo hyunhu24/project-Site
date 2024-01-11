@@ -1,0 +1,23 @@
+﻿@{
+	string? purposeCode = ViewData["purposeCode"] as string;
+}
+<div class="g-input-box g-input-mb">
+	<label for="memberEmail">이메일 인증(아이디) <br /> Email Authentication (ID)<strong>*</strong></label>
+	<div class="withBtn">
+		<input type="text" name="memberEmail" id="memberEmail" maxlength="50" required />
+		<button type="button" id="btnSendAuthCode" class="g-btn outline">Send code</button>
+	</div>
+	<div class="withBtn">
+		<div class="position-relative">
+			<input type="tel" name="authCode" id="authCode" maxlength="4" readonly required />
+			<div class="timer hide" id="areaAuthCodeCheck">
+				<span class="material-icons-outlined">schedule</span>
+				<span></span>
+			</div>
+		</div>
+		<button type="button" class="g-btn outline" id="btnCheckAuthCode" disabled>Check</button>
+	</div>
+</div>
+<input type="hidden" name="purposeCode" id="purposeCode" value="@purposeCode" />
+<input type="hidden" name="authSendKey" id="authSendKey" />
+<input type="hidden" name="authCheckKey" id="authCheckKey" />

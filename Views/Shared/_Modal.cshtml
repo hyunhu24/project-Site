@@ -1,0 +1,88 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Default_Dto
+@{
+	bool isLogin = (bool)Model.IS_LOGIN!;
+	string path = Model.PATH!;
+
+	Notice_Dto noticeInfo = new()
+	{
+		NOTICE_IDX = 1,
+		DATE = DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss"),
+	};
+
+	noticeInfo = new Notice_Dac().Select_MainNoticeInfo(noticeInfo);
+
+	string title = string.Empty;
+	string contents = string.Empty;
+	bool isMainPopup = noticeInfo != null;
+	if (isMainPopup)
+	{
+		title = noticeInfo!.TITLE!;
+		contents = noticeInfo!.CONTENTS!;
+		isMainPopup = !string.IsNullOrEmpty(title.Replace(" ", "")) || !string.IsNullOrEmpty(contents.Replace(" ", ""));
+	}
+}
+@if (!isLogin)
+{
+	<div class="modal fade" id="modalLogin" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content loginModal">
+				<div class="modal-header">
+					<div class="popupImg"><img src="/images/logo.png" alt="logo" /></div>
+					<div class="flexBtn-box">
+						<button type="button" class="g-btn lightMonotone innerIcon closeBtn" data-dismiss="modal">
+							<span class="material-icons">close</span>
+						</button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="login-box">
+						<div class="g-input-box g-input-mb">
+							<label for="loginId">아이디 / ID</label>
+							<input type="text" name="loginId" id="loginId" maxlength="50" required />
+						</div>
+						<div class="g-input-box">
+							<label for="loginPassword">비밀번호 / Password</label>
+							<input type="password" name="loginPassword" id="loginPassword" maxlength="50" required />
+						</div>
+						<a href="/findpassword" class="g-link findPW">Find password</a>
+					</div>
+					<div class="loginBtn-box">
+						<button type="button" class="g-btn btnLogin">Login</button>
+						<a href="/signup" class="g-link">Sign up</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+@if (path.Equals("/") && isMainPopup)
+{
+	<div class="modal fade" id="modalNotice" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content noticeModal">
+				<div class="modal-header">
+					<div class="popupTitle">@Html.Raw(title)</div>
+					<div class="flexBtn-box">
+						<button type="button" class="g-btn lightMonotone innerIcon closeBtn" data-dismiss="modal">
+							<span class="material-icons">close</span>
+						</button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="textBox">
+						<p>@Html.Raw(contents.Replace("\r\n", "<br>"))</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div>
+						<div class="g-check-box">
+							<input id="isTodayHide" type="checkbox" />
+							<label for="isTodayHide"><span class="marker"></span>오늘 하루 보지 않기</label>
+						</div>
+					</div>
+					<button type="button" class="g-btn red closeBtn" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+}

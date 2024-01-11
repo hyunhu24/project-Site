@@ -1,0 +1,69 @@
+@import "variables";
+
+@mixin font($color, $size, $weight, $height) {
+	color: $color;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+@mixin flexMC() {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin flexVC() {
+	display: flex;
+	align-items: center;
+}
+
+@mixin flexVC_b() {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+@mixin center-align() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin vertical-align() {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin horizontal-align() {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+// 화면 사이즈_breakpoints
+@mixin tablet_S {
+	@media (min-width: #{$bpMedium}) {
+		@content;
+	}
+}
+
+@mixin tablet_B {
+	@media (min-width: #{$bpMedium_bigger}) {
+		@content;
+	}
+}
+
+@mixin desktop_S {
+	@media (min-width: #{$bpLarge}) {
+		@content;
+	}
+}
+
+@mixin desktop_B {
+	@media (min-width: #{$bpHuge}) {
+		@content;
+	}
+}

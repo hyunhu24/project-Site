@@ -1,0 +1,131 @@
+#detail {
+	.container {
+		.detailBox {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			padding-bottom: 4rem;
+			.detail-img {
+				width: 100%;
+				max-width: 640px;
+				margin: auto;
+				.detailImgBox {
+					border-radius: 1.6rem;
+					overflow: hidden;
+					video {
+						width: 100%;
+						height: 100%;
+						vertical-align: middle;
+					}
+				}
+			}
+			.detail-text {
+				.title {
+					h1 {
+						@include font($grey00, 3.2rem, $bolder, 3.2rem);
+						margin-bottom: 0.8rem;
+					}
+					span {
+						@include font($grey00, 2.4rem, $regular, normal);
+					}
+				}
+				.explain {
+					border-top: 1px solid #000;
+					border-bottom: 1px solid #000;
+					margin: 2.4rem 0;
+					padding: 2.4rem 0;
+					@include font($grey00, 1.6rem, $bolder, 2.56rem);
+
+					p {
+						margin-top: 0.8rem;
+						font-weight: $regular;
+					}
+				}
+				.buyCount {
+					.remaind {
+						display: inline-block;
+						@include font($grey00, 1.6rem, $regular, 2.56rem);
+						padding: 0 1.2rem;
+						border: 1px solid $grey00;
+						border-radius: 100px;
+						span {
+							margin-left: 0.4rem;
+							font-weight: $bolder;
+						}
+						&.active {
+							display: none;
+						}
+					}
+
+					.total {
+						text-align: right;
+						margin-top: 1.2rem;
+						@include font($grey00, 2rem, $bolder, 3.2rem);
+						strong {
+							font-size: 2.4rem;
+						}
+					}
+				}
+				.g-btn {
+					width: 100%;
+					margin-top: 4rem;
+				}
+			}
+		}
+		.imgUpload {
+			border-radius: 1.6rem;
+			width: 100%;
+			height: auto;
+			margin: 4rem 0;
+			background: #e9e9e9;
+			text-align: center;
+			@include font($grey00, 3.2rem, $medium, normal);
+			@include flexMC();
+			overflow: hidden;
+			white-space: nowrap;
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+		@include tablet_S {
+			.detailBox {
+				.detail-text {
+					.buyCount {
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: flex-end;
+						.title {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+		@include tablet_B {
+			.detailBox {
+				flex-direction: row;
+				justify-content: center;
+				gap: 8rem;
+				.detail-img {
+					width: 100%;
+					min-width: 400px;
+					max-width: 400px;
+					margin: 0;
+				}
+				.detail-text {
+					width: 540px;
+					max-width: 540px;
+				}
+			}
+		}
+		@include desktop_S {
+			.detailBox {
+				.detail-img {
+					min-width: 560px;
+					max-width: 560px;
+				}
+			}
+		}
+	}
+}

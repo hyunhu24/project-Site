@@ -1,0 +1,49 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Default_Dto
+@using Newtonsoft.Json;
+@{
+	List<Product_Dto>? productList = ViewData["productList"] as List<Product_Dto>;
+	int productCount = productList!.Count;
+	bool isSwiper = productCount > 1;
+	string[] backgroundImageUrls = productList?.Select(p => p.BACKGROUND_IMAGE_URL!).ToArray() ?? new string[0];
+	string jsonBackgroundImageUrls = JsonConvert.SerializeObject(backgroundImageUrls);
+}
+<div id="index">
+	<div class="swiper" id="areaProductList" style="@(backgroundImageUrls.Length > 0 ? "background: url(" + backgroundImageUrls[0] + ");background-repeat: no-repeat;background-position: center center;background-size: cover;" : "")">
+		@await Html.PartialAsync("~/Views/Shared/_Header.cshtml", Model)
+		<div class="swiper-wrapper">
+			@for (int i = 0; i < productCount; i++)
+			{
+				<div class="swiper-slide">
+					<div class="mainCard">
+						<div class="cardImg">
+							<div class="card-imges">
+								<img src="@productList![i].THUMBNAIL_IMAGE_URL" />
+							</div>
+						</div>
+						<div class="cardText">
+							<h1>@Html.Raw(productList[i].PRODUCT_NAME)</h1>
+							<p>@Html.Raw(productList[i].MAIN_DESCRIPTION)</p>
+						</div>
+						<button type="button" class="g-btn" onclick="MovePath('/Product/Info/@productList[i].PRODUCT_IDX')">view detail</button>
+					</div>
+				</div>
+			}
+		</div>
+		@if (isSwiper)
+		{
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-pagination"></div>
+		}
+	</div>
+</div>
+<script type="text/javascript">
+	const _backgroundImageUrls = @Html.Raw(jsonBackgroundImageUrls);
+
+	$(function () {
+		MainNotice();
+		if (JSON.parse(@isSwiper.ToString().ToLower())) {
+			SwiperProductList();
+		}
+	});
+</script>

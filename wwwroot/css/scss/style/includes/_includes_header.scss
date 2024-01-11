@@ -1,0 +1,145 @@
+header {
+	position: relative;
+	width: 100%;
+	z-index: 10;
+
+	// 공통
+	.menuList {
+		li {
+			a {
+				@include font($grey00, 1.6rem, $medium, normal);
+				text-transform: uppercase;
+				padding: 0.4rem;
+				cursor: pointer;
+				&:hover,
+				&.active {
+					text-decoration-line: underline;
+					text-underline-position: under;
+				}
+			}
+		}
+	}
+
+	// 360 - 768에서만 사용
+	.moblie-cover {
+		@include flexVC_b;
+		width: 100%;
+		height: $headerMobile;
+		padding: 1.2rem;
+
+		@include tablet_B {
+			display: none;
+		}
+
+		.logo {
+			width: 19.6rem;
+			cursor: pointer;
+		}
+		.MoblieGnb {
+			position: relative;
+			@include desktop_S {
+				display: none;
+			}
+			.side-menu {
+				@include flexVC;
+				position: fixed;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.5);
+				z-index: 5000;
+				.clickClose {
+					width: 15%;
+					height: 100%;
+				}
+				.menu-contents {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 90%;
+					height: 100%;
+					background: $bg00;
+					padding: 1.2rem;
+					transform: translateX(100%);
+					transition: transform 0.3s ease-in-out;
+					&.active {
+						transform: translateX(0);
+					}
+
+					.closeSideMenu {
+						position: absolute;
+						top: 1.2rem;
+						right: 1.2rem;
+					}
+					.menuList {
+						margin-top: 8rem;
+						li {
+							display: flex;
+							justify-content: center;
+							margin: 0.8rem;
+							& ~ li {
+								margin-top: 2.4rem;
+							}
+						}
+					}
+					.typeLogin {
+						position: absolute;
+						bottom: 1.2rem;
+						left: 1.2rem;
+						right: 1.2rem;
+						@include flexVC_b;
+						.g-btn {
+							width: 75%;
+							&.outline {
+								width: 25%;
+								margin-right: 0.8rem;
+							}
+						}
+					}
+					.typeLogout {
+						position: absolute;
+						bottom: 1.2rem;
+						left: 1.2rem;
+						right: 1.2rem;
+						.g-btn {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// 1024 이상에서만 사용
+	.tebletPc-cover {
+		display: none;
+		@include tablet_B {
+			display: block;
+			height: $headerTabletPc;
+			padding: 3.2rem 1.6rem;
+			.TebletPcGnb {
+				.menuList {
+					@include flexMC;
+					li {
+						padding: 0.8rem;
+						& ~ li {
+							margin-left: 4rem;
+						}
+						&.inside-logo {
+							padding: 0;
+							margin: 0 5.6rem;
+							.logo {
+								width: 30.8rem;
+								cursor: pointer;
+							}
+							& + li {
+								margin-left: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

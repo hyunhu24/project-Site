@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+		<link rel="stylesheet" href="/wwwroot/lib/swiper/dist/css/swiper.min.css" />
+
+		<script src="/wwwroot/lib/swiper/dist/js/swiper.min.js"></script>
+		<script src="/wwwroot/lib/jquery/dist/jquery.min.js"></script>
+
+		<link rel="shortcut icon" href="/wwwroot/favicon.ico" />
+
+		<script>
+			$(function () {
+				var includes = $("[data-include]");
+				jQuery.each(includes, function () {
+					var file = "/Publishing/Views/_includes/" + $(this).data("include") + ".html";
+					$(this).load(file);
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div data-include="head"></div>
+		<div data-include="common_modal"></div>
+
+		<div id="index">
+			<div
+				class="swiper mySwiper"
+				style="
+					background: url(/images/indexSwiper-background-img1.png);
+					background-repeat: no-repeat;
+					background-position: center center;
+					background-size: cover;
+				"
+			>
+				<header data-include="header"></header>
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img1.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img2.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img3.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img1.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img2.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="mainCard">
+							<div class="cardImg">
+								<div class="card-imges">
+									<img src="/images/indexSwiper-img3.png" alt="idol img" />
+								</div>
+							</div>
+							<div class="cardText">
+								<h1>title</h1>
+								<p>Fusce elementum bibendum libero ac semper.</p>
+								<p>Mauris sollicitudin nunc nec ligula congue, eget faucibus orci rutrum.</p>
+							</div>
+							<button type="button" class="g-btn" onclick="location.href='/Publishing/Views/work/detail.html'">view detail</button>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(function () {
+				// Swiper 플러그인 초기화
+				var mySwiper = new Swiper(".mySwiper", {
+					slidesPerView: 1,
+					spaceBetween: 30,
+					loop: true, // 무한 루프 활성화
+					pagination: {
+						el: ".swiper-pagination",
+						clickable: true,
+						dynamicBullets: true,
+						type: "bullets",
+					},
+					navigation: {
+						nextEl: ".swiper-button-next",
+						prevEl: ".swiper-button-prev",
+					},
+				});
+
+				// 첫 번째 슬라이드 이미지 설정
+				var initialActiveSlideIndex = mySwiper.activeIndex + 1;
+				var initialImageName = "indexSwiper-background-img" + initialActiveSlideIndex + ".png";
+				loadAndFadeImage(initialImageName);
+
+				// 배경 이미지 로드 및 fadeIn 효과 적용 함수
+				function loadAndFadeImage(imageName) {
+					$("<img />")
+						.attr("src", "/images/" + imageName)
+						.on("load", function () {
+							$(this).remove();
+							$(".swiper")
+								.css({ backgroundImage: "url(/images/" + imageName + ")" })
+								.fadeIn();
+						});
+				}
+
+				// Swiper 슬라이드가 변경될 때마다 이미지를 업데이트하고 fadeIn 효과 적용
+				mySwiper.on("slideChange", function () {
+					var newActiveSlideIndex = mySwiper.realIndex + 1;
+
+					// 슬라이드의 인덱스와 일치하는 이미지 파일 이름 생성
+					var imageName = "indexSwiper-background-img" + newActiveSlideIndex + ".png";
+
+					// 배경 이미지 로드 및 fadeIn 효과 적용
+					loadAndFadeImage(imageName);
+				});
+			});
+		</script>
+	</body>
+</html>

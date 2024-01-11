@@ -1,0 +1,73 @@
+#faq {
+	.faq {
+		.contents {
+			.faqtitle {
+				cursor: pointer;
+				display: flex;
+				@include font($grey00, 1.6rem, $bold, 2.4rem);
+				letter-spacing: -0.24px;
+				span {
+					@include font($grey00, 2rem, $bold, 3.2rem);
+					letter-spacing: -0.3px;
+				}
+				p {
+					padding: 0.6rem 0 0.6rem 0.8rem;
+				}
+				& ~ .faqtitle {
+					margin-top: 2.4rem;
+				}
+			}
+			.answer {
+				@include font($grey00, 1.4rem, $regular, 2rem);
+				letter-spacing: -0.14px;
+				margin: 0.8rem 0 0 3.2rem;
+				display: none;
+				.answerBox {
+					display: flex;
+					span {
+						@include font($grey00, 1.6rem, $bold, 2.4rem);
+						letter-spacing: -0.24px;
+					}
+					p {
+						padding-left: 0.8rem;
+						border-left: solid 4px rgba(0, 0, 0, 0.05);
+						margin-left: 0.4rem;
+					}
+					&.active {
+						display: block;
+					}
+				}
+			}
+		}
+		@include tablet_S {
+			.contents {
+				.faqtitle {
+					@include font($grey00, 1.8rem, $bold, 2.8rem);
+					letter-spacing: -0.27px;
+					span {
+						@include font($grey00, 2.8rem, $bold, 3.6rem);
+						letter-spacing: -0.42px;
+					}
+					p {
+						padding-left: 0.8rem;
+					}
+				}
+				.answer {
+					@include font($grey00, 1.6rem, $regular, 2.4rem);
+					letter-spacing: -0.16px;
+					margin: 0.6rem 0 0 4rem;
+					.answerBox {
+						span {
+							@include font($grey00, 1.8rem, $bold, 2.8rem);
+							letter-spacing: -0.27px;
+						}
+						p {
+							padding-left: 1.6rem;
+							margin-left: 1.6rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}

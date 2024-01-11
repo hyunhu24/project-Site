@@ -1,0 +1,120 @@
+footer {
+	position: relative;
+	bottom: 0;
+	left: 0;
+	height: $footerMobile;
+	margin-top: auto;
+	border-top: 1px solid $borderDividerLight;
+	padding: 2.4rem 0;
+
+	.container {
+		padding-left: 1.2rem;
+		padding-right: 1.2rem;
+		.company-info {
+			margin-bottom: 4rem;
+			h4 {
+				@include font($grey00, 2.8rem, $bolder, 100%);
+				letter-spacing: -0.42px;
+			}
+			ul {
+				margin: 4rem 0;
+				li {
+					& ~ li {
+						margin-top: 0.8rem;
+					}
+					span {
+						@include font($grey00, 1.2rem, $regular, 1.6rem);
+						letter-spacing: -0.12px;
+						margin-left: 0.4rem;
+						&.title {
+							color: $grey02;
+							margin-left: 0;
+						}
+					}
+				}
+			}
+			.d-flex {
+				align-items: center;
+				justify-content: space-between;
+				.text-link {
+					a {
+						@include font($link, 1.4rem, $regular, 2rem);
+						letter-spacing: -0.14px;
+						text-decoration-line: underline;
+						text-underline-position: under;
+						padding: 0.4rem 0;
+						& ~ a {
+							margin-left: 0.8rem;
+						}
+					}
+				}
+				.icon-link {
+					@include flexVC;
+					.g-icon-btn {
+						& ~ .g-icon-btn {
+							margin-left: 0.8rem;
+						}
+					}
+				}
+			}
+		}
+		.logo {
+			display: block;
+			width: 13rem;
+			margin: 0 auto;
+		}
+		.copyright {
+			@include font($grey02, 1.2rem, $regular, 1.6rem);
+			letter-spacing: -0.12px;
+			text-align: center;
+			margin-top: 2.4rem;
+			padding-top: 2.4rem;
+			border-top: 1px solid $borderDividerLight;
+		}
+	}
+
+	@include tablet_S {
+		height: $footerTabletPc;
+		padding: 4rem 0;
+		.container {
+			padding-left: 5rem;
+			padding-right: 5rem;
+			.company-info {
+				position: relative;
+				margin-bottom: 4.8rem;
+				ul {
+					margin: 4rem 0 0;
+				}
+				.d-flex {
+					width: 38.3rem;
+					position: absolute;
+					top: 0;
+					right: 0;
+					.text-link {
+						display: flex;
+						flex-direction: column;
+						a {
+							& ~ a {
+								margin-left: 0;
+								margin-top: 0.8rem;
+							}
+						}
+					}
+					.icon-link {
+						.g-icon-btn {
+							& ~ .g-icon-btn {
+								margin-left: 1.6rem;
+							}
+						}
+					}
+				}
+			}
+			.logo {
+				margin: 0;
+			}
+			.copyright {
+				text-align: left;
+			}
+		}
+	}
+}

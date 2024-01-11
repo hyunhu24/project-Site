@@ -1,0 +1,303 @@
+#detailBuy,
+#detailBuyComplete,
+#myPurchaseDetail {
+	.container {
+		.g-infoBox {
+			margin: 4rem 0;
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			.productInfo {
+				.contentBox {
+					@include flexVC;
+					flex-direction: row;
+					white-space: nowrap;
+					flex-wrap: wrap;
+					@include font($grey00, 1.6rem, $regular, 2.4rem);
+					letter-spacing: -0.16px;
+					border-bottom: 1px solid #f2f2f2;
+					justify-content: space-between;
+					padding-bottom: 0.8rem;
+					.leftbox {
+						@include flexVC;
+						flex-direction: row;
+						.productimg {
+							min-width: 45px;
+							min-height: 45px;
+							overflow: hidden;
+							position: relative;
+							img {
+								cursor: pointer;
+								width: auto;
+								height: 100%;
+								position: absolute;
+								top: 0;
+								left: 50%;
+								transform: translateX(-50%);
+								vertical-align: middle;
+							}
+						}
+						.textbox {
+							width: 100%;
+							min-width: 230px;
+							margin-left: 0.8rem;
+							cursor: pointer;
+							h1 {
+								@include font($grey00, 1.8rem, $bold, 2.8rem);
+								letter-spacing: -0.27px;
+							}
+							span {
+								@include font($grey00, 1.4rem, $regular, 2rem);
+								letter-spacing: -0.14px;
+							}
+						}
+					}
+				}
+			}
+			.buyerInfo {
+				.infoText {
+					& ~ .infoText {
+						margin-top: 1.6rem;
+					}
+					&.onlyNFT{
+						&.active{
+							display: none;
+						}
+					}
+				}
+			}
+			.deliveryInfo {
+				.g-input-box {
+					margin-top: 1.6rem;
+				}
+				.infoTitle {
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+			.payInfo {
+				.infoText {
+					margin-bottom: 1.6rem;
+				}
+				.payContents {
+					display: flex;
+					flex-direction: column;
+					.payChoose {
+						display: flex;
+						flex-direction: column;
+						padding: 0.4rem 0;
+						gap: 1.6rem;
+						.tab-row {
+							display: flex;
+							gap: 1.6rem;
+						}
+						.tab-content {
+							display: none;
+							&.active {
+								display: block;
+							}
+
+							&.one {
+								.payTextBox {
+									margin-bottom: 1.6rem;
+									div {
+										& ~ div {
+											margin-top: 0.8rem;
+										}
+									}
+								}
+							}
+							&.two {
+								div {
+									img {
+										cursor: pointer;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.g-btn {
+			width: 200px;
+			margin: 4rem auto 0;
+			display: none;
+			&.active {
+				display: block;
+			}
+			&.monotone {
+				padding: 1.2rem;
+				width: 90px;
+			}
+		}
+	}
+	@include tablet_S {
+		.container {
+			.g-infoBox {
+				.productInfo {
+					.contentBox {
+						flex-wrap: nowrap;
+						padding-top: 1.6rem;
+						padding-bottom: 1.6rem;
+						margin-bottom: 0rem;
+						.leftbox {
+							.productimg {
+								width: 75px;
+								height: 75px;
+							}
+							.textbox {
+								width: auto;
+							}
+						}
+						.count,
+						.total {
+							padding: 1.6rem 0.8rem;
+							width: 120px;
+							text-align: center;
+						}
+					}
+				}
+				.buyerInfo {
+					.infoText {
+						& ~ .infoText {
+							margin-top: 0rem;
+						}
+					}
+				}
+				.deliveryInfo {
+					.g-input-box {
+						margin-top: 0;
+						flex-direction: row;
+						input[type="text"] {
+							margin: 1.6rem 0.8rem;
+						}
+						.g-title {
+							padding: 2.8rem 0.8rem;
+							margin-bottom: 0;
+							width: 160px;
+						}
+					}
+				}
+				.payInfo {
+					.infoText {
+						margin-bottom: 0;
+					}
+					.payContents {
+						border-bottom: 1px solid #f2f2f2;
+						.g-title {
+							padding: 1.6rem 0.8rem;
+							@include flexVC();
+						}
+						flex-direction: row;
+						.payChoose {
+							width: 100%;
+							padding: 1.6rem 0.8rem;
+							.tab-content {
+								display: none;
+								&.active {
+									display: block;
+								}
+								&.one {
+									.payTextBox {
+										margin-bottom: 1.6rem;
+									}
+									.g-input-box {
+										border-bottom: 0px;
+										label {
+											@include font($grey00, 1.4rem, $regular, 2rem);
+											letter-spacing: -0.14px;
+										}
+									}
+								}
+								&.two {
+									@include font($grey00, 1.6rem, $regular, 2.4rem);
+									letter-spacing: -0.16px;
+									.payTextBox {
+										margin-bottom: 1.6rem;
+										div {
+											& ~ div {
+												margin-top: 0.8rem;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+//상세페이지 완료
+#detailBuyComplete,
+#myPurchaseDetail {
+	.container {
+		.g-infoBox {
+			.productInfo {
+				.payTextBox {
+					text-align: center;
+					padding: 1.6rem;
+					div {
+						& ~ div {
+							margin-top: 0rem;
+						}
+					}
+				}
+			}
+			.payInfo {
+				.payContents {
+					margin-bottom: 1.6rem;
+					border-bottom: 1px solid #f2f2f2;
+					.payChoose {
+						.tab-content {
+							.g-title {
+								padding: 0.4rem 0;
+							}
+						}
+					}
+				}
+				.infoText {
+					margin-top: 1.6rem;
+					margin-bottom: 0;
+				}
+			}
+		}
+		.btnBox {
+			display: flex;
+			justify-content: center;
+			.g-btn {
+				width: 200px;
+				margin: 0;
+				display: block;
+				&.monotone {
+					width: 90px;
+				}
+				& ~ .g-btn {
+					margin-left: 0.8rem;
+				}
+			}
+		}
+	}
+	@include tablet_S {
+		.container {
+			.g-infoBox {
+				.payInfo {
+					.payContents {
+						margin-bottom: 0;
+					}
+					.infoText {
+						margin-top: 0;
+					}
+				}
+				.infoText {
+					div {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

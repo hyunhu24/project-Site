@@ -1,0 +1,60 @@
+﻿@{
+    IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
+    bool isDebug = config.GetValue<bool>("isDebug");
+    bool isMobile = Context.Request.Headers["User-Agent"].ToString().ToLower().Contains("mobile");
+    string jsFolder = config.GetValue<string>("JsFolder")!;
+    string serviceName = config.GetValue<string>("ServiceName")!;
+    string youtubeLink = config.GetValue<string>("YoutubeLink")!;
+    string instargramLink = config.GetValue<string>("InstargramLink")!;
+    int pageSize = config.GetValue<int>("PageSize")!;
+    int authEndMinutes = config.GetValue<int>("AuthEndMinutes");
+    string originalPath = Context.Request.Path.ToString();
+    string path = originalPath.ToLower();
+    bool isLogin = Context.Request.Cookies[config.GetValue<string>("CookieKey:Login")!] != null;
+
+    Default_Dto defaultDto = new()
+    {
+        IS_DEBUG = isDebug,
+        IS_MOBILE = isMobile,
+        JS_FOLDER = jsFolder,
+        PAGE_SIZE = pageSize,
+        ORIGINAL_PATH = originalPath,
+        PATH = path,
+        IS_LOGIN = isLogin,
+        SERVICE_NAME = serviceName,
+        AUTH_END_MINUTES = authEndMinutes,
+        YOUTUBE_LINK = youtubeLink,
+        INSTARGRAM_LINK = instargramLink
+    };
+
+    bool isHeader = true;
+    bool isFooter = true;
+
+    if (path.Equals("/"))
+    {
+        isHeader = false;
+        isFooter = false;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("~/Views/Shared/_Head.cshtml", defaultDto)
+</head>
+<body>
+    <form method="post">
+        <input type="hidden" name="page" id="page" />
+        <input type="text" class="hide" />
+        @if (isHeader)
+        {
+            @await Html.PartialAsync("~/Views/Shared/_Header.cshtml", defaultDto)
+        }
+        @RenderBody()
+        @if (isFooter)
+        {
+            @await Html.PartialAsync("~/Views/Shared/_Footer.cshtml", defaultDto)
+        }
+        @await Html.PartialAsync("~/Views/Shared/_Modal.cshtml", defaultDto)
+    </form>
+</body>
+</html>

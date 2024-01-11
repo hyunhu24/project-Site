@@ -1,0 +1,11 @@
+﻿@{
+	string path = Context.Request.Path.ToString().ToLower();
+}
+<ul class="g-tab-row">
+	<li class="tabBtn@(path.Equals("/termsofuse") ? " active" : "")" onclick="MovePath('/termsofuse')">
+		<div>이용약관</div>
+	</li>
+	<li class="tabBtn@(path.Equals("/privacypolicy") ? " active" : "")" onclick="MovePath('/privacypolicy')">
+		<div>개인정보 처리방침</div>
+	</li>
+</ul>

@@ -1,0 +1,1442 @@
+@import "variables";
+@import "mixins";
+abbr,
+address,
+article,
+aside,
+audio,
+b,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+html,
+body {
+	min-height: 100vh;
+	font-family: "Montserrat", "Malgun Gothic";
+	font-size: 10px;
+	padding: 0;
+	margin: 0;
+	background: $bg00;
+	box-sizing: border-box;
+
+	// 모바일 사이드 메뉴 노출 시 스크롤 금지
+	// &.not-scroll {
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	overflow: hidden !important;
+	// 	touch-action: none;
+	// }
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	padding: 0 !important;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	&:horizontal {
+		height: 10px;
+	}
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+	background-color: #6d6d6d;
+	outline: 1px solid #6d6d6d;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+	text-decoration: none;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	text-decoration: inherit;
+	&:visited,
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+		color: inherit;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+
+button {
+	color: inherit;
+	font-weight: inherit;
+	background: none;
+	border: none;
+	text-align: center;
+	&:focus {
+		outline: none;
+	}
+}
+
+input {
+	outline: none;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+textarea {
+	resize: none;
+	outline: none;
+	font-family: none;
+}
+
+li {
+	list-style-type: none;
+	list-style: none;
+}
+
+main {
+	display: block;
+}
+
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// google Material Icons
+@font-face {
+	font-family: "Material Icons";
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format("woff2");
+}
+@font-face {
+	font-family: "Material Icons Outlined";
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format("woff2");
+}
+.material-icons {
+	font-family: "Material Icons";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: "liga";
+	-webkit-font-smoothing: antialiased;
+}
+.material-icons-outlined {
+	font-family: "Material Icons Outlined";
+	font-weight: 400;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "liga";
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.hide {
+	display: none !important;
+}
+
+.show {
+	display: block !important;
+}
+
+.g-container {
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+}
+
+.g-pageTitle {
+	@include font($grey00, 3.2rem, $bold, 4rem);
+	letter-spacing: -0.48px;
+	text-transform: uppercase;
+	margin-bottom: 4rem;
+}
+
+.g-btn {
+	position: relative;
+	@include flexMC;
+	@include font($white, 1.6rem, $bold, 2.4rem);
+	letter-spacing: -0.16px;
+	padding: 1.2rem;
+	border: 1px solid $primaryBtn;
+	border-radius: 0.8rem;
+	transition: all 0.3s ease;
+	z-index: 1;
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background: $primaryBtn;
+		border-radius: 0.8rem;
+		z-index: -2;
+	}
+
+	&:hover {
+		border-color: $primaryBtnHover;
+		&:before,
+		&:after {
+			background: $primaryBtnHover;
+		}
+	}
+	&:disabled {
+		opacity: 0.4;
+		cursor: no-drop;
+		&:before,
+		&:after {
+			background: $primaryBtn;
+		}
+	}
+
+	&.outline {
+		border-color: $primaryBtn;
+		color: $grey00;
+		background: transparent;
+		&:before,
+		&:after {
+			background: transparent;
+		}
+		&:hover {
+			color: $white;
+			border-color: $primaryBtn;
+			&:before,
+			&:after {
+				background: $primaryBtn;
+			}
+		}
+		&:disabled {
+			color: $grey00;
+			opacity: 0.4;
+			cursor: no-drop;
+			&:before,
+			&:after {
+				background: transparent;
+			}
+		}
+	}
+
+	&.monotone {
+		border-color: $monotoneBtn;
+		color: $grey00;
+		&:before,
+		&:after {
+			background: $monotoneBtn;
+		}
+		&:hover {
+			color: $grey00;
+			border-color: $monotoneBtnHover;
+			&:before,
+			&:after {
+				background: $monotoneBtnHover;
+			}
+		}
+		&:disabled {
+			border-color: $monotoneBtn;
+			opacity: 0.4;
+			cursor: no-drop;
+			&:before,
+			&:after {
+				background: $monotoneBtn;
+			}
+		}
+	}
+
+	&.darktone {
+		border-color: $grey00;
+		color: $white;
+		&:before,
+		&:after {
+			background: $grey00;
+		}
+		&:hover {
+			color: $white;
+			border-color: $grey01;
+			&:before,
+			&:after {
+				background: $grey01;
+			}
+		}
+		&:disabled {
+			border-color: $grey01;
+			opacity: 0.4;
+			cursor: no-drop;
+			&:before,
+			&:after {
+				background: $grey00;
+			}
+		}
+	}
+
+	&.lightMonotone {
+		border-color: $lightMonotoneBtn;
+		color: $grey00;
+		&:before,
+		&:after {
+			background: $lightMonotoneBtn;
+		}
+		&:hover {
+			color: $grey00;
+			border-color: $lightMonotoneBtnHover;
+			&:before,
+			&:after {
+				background: $lightMonotoneBtnHover;
+			}
+		}
+		&:disabled {
+			border-color: $lightMonotoneBtn;
+			opacity: 0.4;
+			cursor: no-drop;
+			&:before,
+			&:after {
+				background: $lightMonotoneBtn;
+			}
+		}
+	}
+}
+
+// 아이콘 들어간 버튼
+.g-icon-btn {
+	width: 4rem;
+	height: 4rem;
+	@include flexMC;
+	border-radius: 8px;
+	background: rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	&.material-icons {
+		font-size: 2rem;
+		color: $grey00;
+		padding: 1rem;
+	}
+	&.inside-img {
+		padding: 0.6rem;
+		img {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+}
+
+.g-link {
+	@include font($link, 1.6rem, $regular, 2.4rem);
+	letter-spacing: -0.16px;
+	text-decoration-line: underline;
+	text-underline-position: under;
+	&:hover {
+		color: $linkHvr;
+		text-decoration-line: underline;
+		cursor: pointer;
+	}
+}
+
+.g-input-mb {
+	margin-bottom: 2.4rem;
+}
+
+.g-input-box {
+	display: flex;
+	flex-direction: column;
+	label {
+		@include font($grey00, 1.4rem, $regular, 2rem);
+		letter-spacing: -0.14px;
+		margin-bottom: 0.4rem;
+	}
+	input {
+		width: 100%;
+		height: 4.8rem;
+		@include font($inputTxtLight, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+		padding: 1.2rem;
+		background: $inputBgDefault;
+		border: 1px solid transparent;
+		border-radius: 0.8rem;
+		&:hover {
+			background: $inputBgDisabled;
+			border-color: $inputBorderHover;
+		}
+		&:focus {
+			color: $inputTxtDark;
+			background: $inputBgDisabled;
+			border-color: $inputBorderFocus;
+		}
+		&.active {
+			color: $inputTxtDark;
+		}
+		&:disabled {
+			color: $inputTxtDisabled;
+			background: $inputBgDisabled;
+			border-color: transparent;
+			&:hover {
+				background: $inputBgDisabled;
+				cursor: no-drop;
+			}
+		}
+		&:read-only {
+			color: $inputTxtDark;
+			&:hover,
+			&:focus {
+				border-color: transparent;
+				background: $inputBgDefault;
+			}
+		}
+	}
+	.textarea {
+		height: 23.2rem;
+		@include font(#2f393e, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+		padding: 1.6rem;
+		background: $sectionDivider;
+		border: none;
+		border-radius: 0.8rem;
+		overflow-y: auto;
+		&::-webkit-scrollbar {
+			width: 5px;
+			&:horizontal {
+				height: 5px;
+			}
+		}
+		&.deleteAccount {
+			height: 38.6rem;
+		}
+	}
+	.inputInfoText {
+		@include font($grey01, 1.4rem, $regular, 2rem);
+		letter-spacing: -0.14px;
+		margin-top: 0.4rem;
+		padding: 0 0.8rem;
+	}
+
+	// 버튼과 함께 사용하는 경우
+	.withBtn {
+		@include flexVC;
+		& ~ .withBtn {
+			margin-top: 0.8rem;
+		}
+		.g-btn {
+			width: 12rem;
+			min-width: 12rem;
+			height: 4.8rem;
+			white-space: nowrap;
+			margin-left: 0.8rem;
+		}
+
+		// 타이머가 있는 경우
+		.position-relative {
+			width: 100%;
+			.timer {
+				@include vertical-align;
+				top: 46%;
+				right: 0.8rem;
+				@include flexVC;
+				span {
+					@include font($warning, 1.4rem, $bold, normal);
+					letter-spacing: -0.14px;
+					margin-left: 0.2rem;
+					&.material-icons-outlined {
+						font-size: 1.6rem;
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.g-check-box {
+	input {
+		display: none;
+		&:checked {
+			& + label {
+				color: $grey00;
+				.marker {
+					background-color: $grey00;
+					border-color: $grey00;
+					&:after {
+						display: block;
+					}
+				}
+				&:hover {
+					.marker {
+						border-color: $grey00;
+					}
+				}
+			}
+		}
+		&:disabled {
+			& + label {
+				color: $grey04;
+				.marker {
+					background-color: $grey04;
+					border-color: transparent;
+				}
+				&:hover {
+					color: $grey04;
+					cursor: no-drop;
+					.marker {
+						border-color: transparent;
+					}
+				}
+			}
+		}
+
+		& + label {
+			width: fit-content;
+			@include flexVC;
+			@include font($grey03, 1.6rem, $regular, 2.4rem);
+			letter-spacing: -0.16px;
+			padding: 0.4rem 0.4rem 0.4rem 0;
+			.marker {
+				display: block;
+				position: relative;
+				width: 1.6rem;
+				height: 1.6rem;
+				margin-right: 0.4rem;
+				border: 2px solid $grey03;
+				border-radius: 0.2rem;
+				&:after {
+					content: "";
+					position: absolute;
+					display: none;
+					left: 0.3rem;
+					top: -0.05rem;
+					width: 0.6rem;
+					height: 1rem;
+					border: solid $white;
+					border-width: 0 0.2rem 0.2rem 0;
+					transform: rotate(45deg);
+				}
+			}
+			&:hover {
+				color: $grey00;
+				cursor: pointer;
+				.marker {
+					border-color: $grey03;
+				}
+			}
+		}
+	}
+}
+
+.g-radio {
+	input {
+		display: none;
+		&:checked {
+			& + label {
+				color: $grey00;
+				.marker {
+					border-color: $grey00;
+					&:after {
+						display: block;
+						background-color: $grey00;
+					}
+				}
+				&:hover {
+					.marker {
+						border-color: $grey00;
+					}
+				}
+			}
+		}
+		&:disabled {
+			& + label {
+				color: $grey04;
+				.marker {
+					background-color: $grey04;
+					border-color: $grey04;
+				}
+				&:hover {
+					cursor: no-drop;
+					.marker {
+						border-color: $grey04;
+					}
+				}
+			}
+		}
+
+		& + label {
+			width: fit-content;
+			@include flexVC;
+			@include font($grey03, 1.4rem, $regular, 2rem);
+			letter-spacing: -0.14px;
+			padding: 0.6rem 0.4rem;
+			.marker {
+				display: block;
+				position: relative;
+				width: 1.6rem;
+				height: 1.6rem;
+				margin: 0 0.4rem 0 0;
+				border: 1px solid $grey03;
+				border-radius: 1.6rem;
+				&:after {
+					content: "";
+					display: none;
+					@include center-align();
+					width: 1rem;
+					height: 1rem;
+					border-radius: 1.6rem;
+					background: $grey03;
+				}
+			}
+			&:hover {
+				color: $grey00;
+				cursor: pointer;
+				.marker {
+					border-color: $grey03;
+				}
+			}
+		}
+	}
+}
+
+.g-infoBox {
+	.title {
+		@include font($grey00, 2rem, $bold, 3.2rem);
+		letter-spacing: -0.3px;
+		margin-bottom: 0.8rem;
+	}
+	.infoText {
+		display: flex;
+		flex-direction: column;
+		border-bottom: 1px solid #f2f2f2;
+		@include font($grey00, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+		div {
+			margin-bottom: 0.4rem;
+			&.g-title {
+				@include font($grey00, 1.6rem, $regular, 2.4rem);
+				letter-spacing: -0.16px;
+				width: 160px;
+			}
+		}
+		@include tablet_S {
+			flex-direction: row;
+			div {
+				padding: 1.6rem 0.8rem;
+				width: 100%;
+				&.g-title {
+					width: 160px;
+				}
+			}
+		}
+	}
+	.g-title {
+		width: 160px;
+		min-width: 160px;
+		@include font($grey00, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+	}
+	.g-input-box {
+		border-bottom: 1px solid #f2f2f2;
+		input {
+			height: 4.5rem;
+			margin: 0.4rem 0;
+		}
+	}
+	.payTextBox {
+		@include font($grey00, 1.6rem, $bolder, 2.4rem);
+		// @include font($grey00, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+		padding: 1.2rem;
+		background: $sectionDivider;
+		border-radius: 0.8rem;
+		div {
+			div {
+				width: 65px;
+				display: inline-block;
+				margin-right: 1.1rem;
+			}
+			span {
+				font-weight: $regular;
+			}
+			& ~ div {
+				margin-top: 0.8rem;
+			}
+		}
+	}
+}
+
+// bootstrap-select custom style
+.bootstrap-select .dropdown-menu.inner {
+	margin: 0 !important;
+	width: auto !important;
+}
+.bootstrap-select {
+	&.show {
+		.g-select {
+			background: $inputBgDisabled;
+			border-color: $inputBorderHover;
+		}
+	}
+	.g-select {
+		@include font($inputTxtDark, 1.4rem, $regular, 2rem);
+		letter-spacing: -0.14px;
+		padding: 1.2rem;
+		background: $inputBgDefault;
+		border-radius: 0.8rem;
+		border: none;
+		border: 1px solid $inputBgDefault;
+		&:hover {
+			background: $inputBgDisabled;
+			border-color: $inputBorderHover;
+		}
+		&:focus {
+			outline: none;
+		}
+		&.error {
+			border-color: $error;
+		}
+	}
+	.dropdown-menu {
+		margin: 0;
+		padding: 0;
+		background: $bg00;
+		border: none;
+		border-radius: 0.8rem;
+		box-shadow: $inputShadow;
+		ul {
+			li {
+				padding: 0;
+				.dropdown-item {
+					@include font($grey01, 1.4rem, $regular, 2rem);
+					letter-spacing: -0.28px;
+					padding: 0.8rem;
+					&:hover,
+					&:focus,
+					&.active {
+						background: $sectionDivider;
+					}
+				}
+			}
+		}
+	}
+}
+.btn {
+	border-radius: 4px;
+	&.focus,
+	&:focus {
+		box-shadow: none !important;
+	}
+}
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select > select.mobile-device:focus + .dropdown-toggle {
+	outline: none !important;
+	outline-offset: 0;
+}
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+	color: $grey01;
+}
+.bootstrap-select > .dropdown-toggle:after {
+	margin-right: 0.8rem;
+}
+
+.g-tab-row {
+	@include flexVC;
+	margin-bottom: 2.4rem;
+	.tabBtn {
+		width: 50%;
+		@include font($grey00, 1.6rem, $bold, 2.4rem);
+		letter-spacing: -0.24px;
+		white-space: nowrap;
+		text-align: center;
+		padding: 0.8rem 1.6rem;
+		color: $grey04;
+		border-bottom: 1px solid $grey04;
+		&:hover {
+			cursor: pointer;
+			color: $grey02;
+			border-bottom: 1px solid $grey02;
+		}
+		&.active {
+			color: $grey00;
+			border-bottom: 1px solid $grey00;
+		}
+	}
+}
+
+.g-tab-container {
+	.tab-content {
+		display: none;
+		&.active {
+			display: block;
+		}
+		.textBox {
+			border: 1px solid $borderDividerLight;
+			padding: 2rem 1.6rem;
+			@include font($grey00, 1.6rem, $regular, 2.4rem);
+			letter-spacing: -0.16px;
+		}
+	}
+}
+
+// 달력
+.calender {
+	.g-infoBox {
+		display: flex;
+		align-items: center;
+		.g-input-box {
+			border-bottom: none;
+			width: 12rem;
+			position: relative;
+			img {
+				@include vertical-align;
+				right: 0.8rem;
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+	}
+}
+
+// jquery datepicker custom style
+.ui-datepicker {
+	width: 312px !important;
+	padding: 0.8rem;
+	margin-top: 0.9rem;
+	color: $grey00;
+	background: $bg00;
+	border-radius: 0.8rem;
+	border: none;
+	&.ui-widget {
+		&.ui-widget-content {
+			border: none;
+			box-shadow: $inputShadow;
+		}
+	}
+	.ui-state-highlight {
+		color: $primary !important;
+		font-weight: $bolder !important;
+	}
+	.ui-icon-circle-triangle-w {
+		width: 32px !important;
+		height: 32px !important;
+		background-position: center;
+		padding: 0.6rem;
+		background-color: $sectionDivider;
+	}
+	.ui-icon-circle-triangle-e {
+		width: 32px !important;
+		height: 32px !important;
+		background-position: center;
+		padding: 0.6rem;
+		background-color: $sectionDivider;
+		transform: rotate(180deg);
+	}
+	.ui-widget-header {
+		@include flexMC;
+		height: 3.2rem;
+		padding: 0;
+		margin-bottom: 1.2rem;
+		border: none;
+		border-radius: 0;
+		background: none;
+		.ui-icon {
+			background-image: url("/images/icon-arrow.png");
+			width: 20px;
+			height: 20px;
+			object-fit: cover;
+		}
+		.ui-datepicker-prev,
+		.ui-datepicker-next {
+			top: 0px;
+		}
+		.ui-datepicker-next {
+			right: 14px;
+		}
+		.ui-datepicker-title {
+			span {
+				font-family: "Montserrat";
+				@include font($grey00, 1.4rem, $regular, 2rem);
+				letter-spacing: -0.14px;
+			}
+		}
+	}
+	table {
+		font-size: 0;
+		margin: 0;
+		&.ui-datepicker-calendar {
+			th {
+				position: relative;
+				font-family: "Montserrat";
+				@include font($grey00, 1.4rem, $medium, 2rem);
+				letter-spacing: -0.14px;
+				padding: 0.2rem 0.5rem;
+				span {
+					@include center-align;
+				}
+			}
+			tr {
+				height: 3.5rem;
+				td {
+					position: relative;
+					.ui-state-default {
+						@include center-align;
+					}
+				}
+			}
+		}
+	}
+	.ui-state-hover,
+	.ui-widget-content .ui-state-hover,
+	.ui-widget-header .ui-state-hover,
+	.ui-state-focus,
+	.ui-widget-content .ui-state-focus,
+	.ui-widget-header .ui-state-focus,
+	.ui-button:hover,
+	.ui-button:focus {
+		cursor: pointer;
+		border: none;
+		background: transparent;
+		color: transparent;
+	}
+
+	.ui-state-default,
+	.ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default,
+	.ui-button,
+	html .ui-button.ui-state-disabled:hover,
+	html .ui-button.ui-state-disabled:active {
+		@include flexMC;
+		width: 2.4rem;
+		height: 2.4rem;
+		font-family: "Montserrat";
+		@include font($grey00, 1.3rem, $regular, 2rem);
+		text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+		background: none;
+		border: 1px solid transparent;
+		border-radius: 4px;
+		margin: 0 auto;
+		&:hover {
+			border-color: $primary;
+		}
+	}
+}
+
+#ui-datepicker-div .ui-state-active {
+	background: $primary;
+	color: $white !important;
+	font-weight: $regular !important;
+	border-radius: 4px;
+}
+
+.g-table-scroll {
+	overflow-x: auto;
+	margin-top: 0.8rem;
+	.g-table {
+		thead {
+			tr {
+				th {
+					white-space: nowrap;
+				}
+			}
+		}
+		tbody {
+			tr {
+				td {
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}
+
+.g-table {
+	width: 100%;
+	thead {
+		tr {
+			border-top: 1px solid $borderDividerDark;
+			border-bottom: 1px solid $borderDividerDark;
+			th {
+				width: 120px;
+				min-width: 120px !important;
+				@include font($grey00, 1.6rem, $bold, 2.4rem);
+				letter-spacing: -0.24px;
+				text-align: center;
+				padding: 0.8rem;
+				
+				&.w100 {
+					max-width: 100px;
+					min-width: 100px !important;
+				}
+			}
+		}
+	}
+	tbody {
+		tr {
+			&.no-history {
+				td {
+					font-size: 1.5rem;
+					font-weight: $bolder;
+					line-height: 2.4rem;
+					padding: 0.8rem;
+					border-bottom: 0px solid $borderDividerDark;
+				}
+			}
+			td {
+				border-bottom: 1px solid $borderDividerLight;
+				@include font($grey00, 1.6rem, $regular, 2.4rem);
+				letter-spacing: -0.16px;
+				text-align: center;
+				vertical-align: middle;
+				padding: 1.6rem 0.8rem;
+			}
+			&.infoTable {
+				td {
+					&.thumbnail {
+						display: flex;
+						gap: 1.2rem;
+						.thumbnailImg {
+							width: 72px;
+							height: 72px;
+							vertical-align: middle;
+							img {
+								object-fit: cover;
+							}
+						}
+						.thumbnailText {
+							width: 100%;
+							text-align: left;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// pagination
+.pagination {
+	align-items: center;
+	justify-content: center;
+	margin-top: 4rem;
+	.page-item {
+		&:first-child {
+			.page-link {
+				margin-left: 0;
+				margin-right: 0.8rem;
+			}
+		}
+		&:last-child {
+			.page-link {
+				margin-left: 1.6rem;
+			}
+		}
+		&.active {
+			&:hover {
+				.page-link {
+					color: $white;
+					background: $grey00;
+				}
+			}
+			.page-link {
+				color: $white;
+				background: $grey00;
+			}
+		}
+		&.prev-next {
+			.page-link {
+				@include font($grey00, 1.4rem, $bold, 2rem);
+				letter-spacing: -0.14px;
+				padding: 0.8rem;
+				width: fit-content;
+			}
+		}
+		.page-link {
+			width: 4rem;
+			height: 4rem;
+			@include font($grey01, 1.4rem, $regular, 2rem);
+			letter-spacing: -0.14px;
+			text-align: center;
+			padding: 1rem;
+			margin-left: 0.8rem;
+			border: none;
+			border-radius: 0.8rem;
+			background: rgba(0, 0, 0, 0.03);
+		}
+
+		&:hover {
+			.page-link {
+				cursor: pointer;
+				background: rgba(0, 0, 0, 0.06);
+			}
+		}
+	}
+
+	@include tablet_S {
+		.page-item {
+			&.prev-next {
+				.page-link {
+					font-size: 1.6rem;
+					line-height: 2.4rem;
+					letter-spacing: -0.16px;
+					padding: 1.2rem;
+				}
+			}
+			.page-link {
+				width: 4.4rem;
+				height: 4.4rem;
+			}
+		}
+	}
+}
+
+.toastMessage {
+	width: 32.8rem;
+	height: 7.2rem;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 2.4rem;
+	padding: 1rem;
+	border: 2px solid $toastError;
+	border-radius: 0.4rem;
+	background: $bg00;
+	box-shadow: $inputShadow;
+	z-index: 15;
+	&.withBtn {
+		height: 7.2rem;
+		.d-flex {
+			align-items: center;
+			.g-btn {
+				width: 4.7rem;
+				height: 3.6rem;
+				padding: 0.8rem;
+				@include font($grey00, 1.4rem, $bold, 2rem);
+				letter-spacing: -0.14px;
+			}
+		}
+	}
+	.material-icons,
+	.material-icons-outlined {
+		color: $toastError;
+		font-size: 2rem;
+		margin-right: 0.4rem;
+	}
+	.textBox {
+		p {
+			@include font($toastError, 1.6rem, $bold, 2.4rem);
+			letter-spacing: -0.24px;
+		}
+	}
+}
+
+.modal {
+	.modal-dialog {
+		@media screen and (min-width: 576px) {
+			max-width: 100%;
+		}
+		@media screen and (min-width: 768px) {
+			max-width: 656px;
+		}
+		.modal-content {
+			border: none;
+			border-radius: 0.8rem;
+			.modal-header {
+				padding: 0;
+				border: none;
+				.popupTitle {
+					@include font($grey00, 3.2rem, $bold, 4rem);
+					letter-spacing: -0.48px;
+				}
+				.closeBtn {
+					position: absolute;
+					top: 0.8rem;
+					right: 0.8rem;
+				}
+			}
+			.modal-body {
+				padding: 0;
+			}
+			.modal-footer {
+				padding: 0;
+				border: none;
+			}
+
+			&.loginModal {
+				width: 100%;
+				min-width: 320px;
+				margin: 0 1.5rem;
+				display: flex;
+				.modal-header {
+					padding: 4rem 2.4rem;
+					align-items: center;
+					.popupImg {
+						margin: 0 auto;
+						img {
+							width: 140px;
+							vertical-align: middle;
+						}
+					}
+				}
+				.modal-body {
+					padding: 1.6rem;
+					.login-box {
+						margin-bottom: 4rem;
+						.g-link {
+							&.findPW {
+								display: block;
+								text-align: right;
+							}
+						}
+					}
+					.loginBtn-box {
+						.g-btn {
+							width: 100%;
+						}
+						.g-link {
+							display: block;
+							text-align: center;
+							margin-top: 0.8rem;
+						}
+					}
+				}
+			}
+			&.noticeModal {
+				margin: 0 1.5rem;
+				height: 90vh;
+				padding: 1.6rem;
+				display: flex;
+				gap: 4rem;
+				.modal-header {
+					height: 40px;
+				}
+				.modal-body {
+					height: calc(90% - 170px);
+					overflow: hidden;
+					@include font($grey00, 1.6rem, $regular, 2.4rem);
+					letter-spacing: -0.16px;
+					.textBox {
+						overflow-y: scroll;
+						height: 100%;
+						display: flex;
+						flex-direction: column;
+						gap: 1.6rem;
+						&::-webkit-scrollbar {
+							width: 0;
+						}
+					}
+				}
+				.modal-footer {
+					height: 50px;
+					display: flex;
+					justify-content: space-between;
+				}
+			}
+			@include tablet_S {
+				&.loginModal {
+					flex-direction: row;
+					.modal-header {
+						flex: 1;
+						.popupImg {
+							margin: 0 auto;
+							img {
+								width: 240px;
+								vertical-align: middle;
+							}
+						}
+					}
+					.modal-body {
+						flex: 1;
+						padding: 8rem 2.4rem 4rem;
+						.login-box {
+							margin-bottom: 4rem;
+							.g-link {
+								&.findPW {
+									display: block;
+									text-align: right;
+								}
+							}
+						}
+						.loginBtn-box {
+							.g-btn {
+								width: 100%;
+							}
+							.g-link {
+								display: block;
+								text-align: center;
+								margin-top: 0.8rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// inspection.html, error.html
+#inspection,
+#error {
+	.container {
+		height: 100vh;
+		@include flexMC;
+		flex-direction: column;
+		img {
+			width: 12rem;
+			margin-bottom: 2.4rem;
+		}
+		p {
+			@include font($grey00, 1.6rem, $bolder, 2.4rem);
+			letter-spacing: -0.24px;
+			text-align: center;
+		}
+		.g-btn {
+			margin-top: 4.8rem;
+		}
+	}
+}
+
+// 페이지 로딩
+.pageLoaging-bg {
+	@include flexMC;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.7);
+	overflow: hidden;
+	z-index: 9000;
+	.spinner {
+		width: 4rem;
+		height: 4rem;
+		border: 0.5rem solid $grey03;
+		border-bottom-color: $white;
+		border-radius: 50%;
+		animation: spinner 800ms linear infinite;
+	}
+
+	@-webkit-keyframes spinner {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes spinner {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}

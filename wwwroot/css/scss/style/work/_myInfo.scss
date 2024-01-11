@@ -1,0 +1,284 @@
+#myInfo,
+#termsOfService {
+	.container {
+		.g-infoBox {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			.productInfo {
+				.payTextBox {
+					padding: 1.6rem;
+					text-align: center;
+					div {
+						span {
+							@include font($grey00, 2rem, $bold, 3.2rem);
+							letter-spacing: -0.3px;
+						}
+					}
+				}
+			}
+			.g-tab-row {
+				margin-bottom: 0;
+			}
+			#myInfoContents {
+				.tab-content {
+					.infoChange {
+						margin-top: 1.6rem;
+						word-break: break-all;
+						border-bottom: 1px solid #f2f2f2;
+						.infoText {
+							border-bottom: 0px;
+							div {
+								margin-bottom: 0;
+								&.g-title {
+									display: flex;
+									align-items: center;
+									margin-bottom: 0.4rem;
+								}
+							}
+						}
+						.btnBox {
+							@include flexVC;
+							justify-content: flex-end;
+							.g-btn {
+								margin: 0.8rem 0;
+								height: fit-content;
+								width: 12.5rem;
+								&.outline {
+									&:hover {
+										color: #fff;
+									}
+								}
+							}
+						}
+						.infoChangeForm {
+							width: 100%;
+							padding: 0.4rem 0;
+							.g-input-box {
+								border-bottom: 0px solid #f2f2f2;
+								margin-top: 0;
+								& ~ .g-input-box {
+									margin-top: 1.6rem;
+								}
+							}
+						}
+						.btnBoxChange {
+							@include flexVC;
+							justify-content: flex-end;
+							padding: 0.8rem 0;
+							.g-btn {
+								white-space: nowrap;
+								margin-top: 0;
+								& ~ .g-btn {
+									margin-left: 0.8rem;
+									color: $white;
+								}
+							}
+						}
+					}
+					.g-btn {
+						margin-top: 4rem;
+						padding: 0.8rem;
+						float: right;
+						@include font($grey00, 1.4rem, $bold, 2rem);
+						letter-spacing: -0.14px;
+					}
+				}
+			}
+			#purchaseHistory {
+				.tab-content {
+					.content-box {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						gap: 0.8rem;
+						.calender {
+							width: 100%;
+							.g-infoBox {
+								@include flexVC_b;
+								flex-direction: row;
+								gap: 4px;
+								.g-input-box {
+									width: calc(50% - 14px);
+									input {
+										@include font($inputTxtDark, 1.4rem, $regular, 2rem);
+										letter-spacing: -0.14px;
+										height: 4.5rem;
+										margin: 0;
+									}
+								}
+								.tilde {
+									@include font($inputTxtDark, 1.6rem, $bold, 1.6rem);
+									letter-spacing: -0.14px;
+								}
+							}
+						}
+						.select-info {
+							width: 100%;
+							@include flexVC_b;
+							.g-infoBox {
+								width: calc(50% - 8px);
+								.g-input-box {
+									border-bottom: 0;
+									input {
+										@include font($inputTxtDark, 1.4rem, $regular, 2rem);
+										letter-spacing: -0.14px;
+										height: 4.5rem;
+										margin: 0;
+									}
+								}
+							}
+						}
+						.searchBox {
+							width: 100%;
+							display: flex;
+							justify-content: flex-end;
+							.g-btn {
+								padding: 0.8rem;
+							}
+						}
+					}
+					.g-table-scroll {
+						.g-table {
+							thead{
+								tr{
+									th{
+										&.sumname {
+											max-width: 300px;
+											min-width: 300px !important;
+											text-align: left;
+										}
+									}
+								}
+							}
+							tbody {
+								tr {
+									// &.infoTable {
+									// 	cursor: pointer;
+									// }
+									.thumbnail {
+										.thumbnailImg {
+											max-width: 48px;
+											max-height: 48px;
+											overflow: hidden;
+											position: relative;
+											img {
+												cursor: pointer;
+												width: auto;
+												height: 100%;
+												position: absolute;
+												top: 0;
+												left: 50%;
+												transform: translateX(-50%);
+												object-fit: contain;
+												vertical-align: middle;
+											}
+										}
+										.thumbnailText {
+											cursor: pointer;
+											span {
+												font-weight: $bold;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.pagination {
+				display: none;
+				&.active {
+					margin-top: 2rem;
+					display: flex;
+				}
+			}
+		}
+	}
+	@include tablet_S {
+		.container {
+			.g-infoBox {
+				#myInfoContents {
+					.tab-content {
+						.infoChange {
+							margin-top: 0;
+							@include flexVC_b;
+							.infoText {
+								div.g-title {
+									margin-bottom: 0;
+								}
+							}
+							.infoChangeForm {
+								width: 100%;
+								padding: 1.6rem 0.8rem;
+							}
+							.btnBoxChange {
+								min-width: 130px;
+								@include flexMC;
+								padding: 1rem 0.8rem;
+								.g-btn {
+									white-space: nowrap;
+									& ~ .g-btn {
+										margin-left: 0.8rem;
+										color: $white;
+									}
+								}
+							}
+						}
+					}
+				}
+				#purchaseHistory {
+					.tab-content {
+						.content-box {
+							flex-direction: row;
+							.select-info {
+								justify-content: center;
+								.g-infoBox {
+									width: 50%;
+									.selectpicker-w {
+										margin-right: 0.8rem;
+									}
+								}
+							}
+							.searchBox {
+								width: min-content;
+								white-space: nowrap;
+								display: flex;
+								justify-content: flex-end;
+								.g-btn {
+									padding: 0.8rem;
+								}
+							}
+						}
+						.g-table-scroll {
+							.g-table {
+								thead{
+									tr{
+										th{
+											&.sumname {
+												max-width: 320px;
+												min-width: 320px !important;
+												
+											}
+										}
+									}
+								}
+								tbody {
+									tr {
+										.thumbnail {
+											.thumbnailImg {
+												min-width: 72px;
+												min-height: 72px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

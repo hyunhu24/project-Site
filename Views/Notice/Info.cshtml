@@ -1,0 +1,18 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Notice_Dto
+<div id="noticeDetail">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">NOTICE</h1>
+				<div class="classification-label">
+					<div class="title">@Html.Raw(Model.TITLE)</div>
+					<div class="date">@Model.INS_DATE!.Substring(2, 9).Replace("-", "/")</div>
+				</div>
+				<div class="mainPost">
+					@Html.Raw(Model.CONTENTS)
+				</div>
+				<button type="button" class="g-btn monotone" onclick="MovePath('/notice')">목록으로</button>
+			</div>
+		</div>
+	</div>
+</div>

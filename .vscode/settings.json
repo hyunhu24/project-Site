@@ -1,0 +1,24 @@
+{
+	"editor.wordWrap": "on",
+	"editor.minimap.enabled": true,
+	"editor.formatOnSave": true,
+	"editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+
+	"liveSassCompile.settings.formats": [
+		{
+			"format": "compressed",
+			"extensionName": ".min.css",
+			"savePath": "/wwwroot/css"
+		}
+	],
+	"liveSassCompile.settings.generateMap": false,
+	"liveSassCompile.settings.excludeList": ["**/bootstrap/**", "**/bootstrap-select/**"],
+
+	"prettier.printWidth": 150,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+
+	"liveServer.settings.donotVerifyTags": true,
+	"liveServer.settings.donotShowInfoMsg": true,
+	"liveServer.settings.port": 5504
+}

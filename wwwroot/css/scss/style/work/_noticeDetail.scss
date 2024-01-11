@@ -1,0 +1,48 @@
+#noticeDetail {
+	.classification-label {
+		border-top: 1px solid $borderDividerDark;
+		border-bottom: 1px solid $borderDividerDark;
+		padding: 0.8rem 0;
+		.title {
+			width: 100%;
+			overflow: hidden;
+			@include font($grey00, 1.6rem, $bold, 2.4rem);
+			letter-spacing: -0.24px;
+			text-overflow: ellipsis;
+		}
+		.date {
+			@include font($grey02, 1.4rem, $regular, 2rem);
+			letter-spacing: -0.14px;
+		}
+	}
+	.mainPost {
+		@include font($grey00, 1.6rem, $regular, 2.4rem);
+		letter-spacing: -0.16px;
+		padding: 1.6rem;
+	}
+	.g-btn {
+		margin: 4rem auto 0;
+	}
+
+	@include tablet_S {
+		.classification-label {
+			@include flexVC_b;
+			padding: 0;
+			.title {
+				font-size: 1.8rem;
+				line-height: 2.8rem;
+				letter-spacing: -0.27px;
+				padding: 1.6rem 1.2rem;
+			}
+			.date {
+				width: 9rem;
+				max-width: 9rem;
+				font-size: 1.6rem;
+				line-height: 2.4rem;
+				letter-spacing: -0.16px;
+				text-align: center;
+				padding: 1.6rem 1.2rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+﻿@model BRILLIANT_NFT_MARKET_FRONT.Models.Product_Dto
+@{
+	bool? isLogin = ViewData["isLogin"] as bool?;
+	int productIdx = (int)Model.PRODUCT_IDX!;
+	int nftRemainsCount = (int)Model.NFT_REMAINS_COUNT!;
+}
+<div id="detail">
+	<div class="g-container">
+		<div class="container">
+			<div class="detailBox">
+				<div class="detail-img">
+					<div class="detailImgBox"><video src="@Model.IMAGE_URL" autoplay muted loop></video></div>
+				</div>
+				<div class="detail-text">
+					<div class="title">
+						<h1>@Html.Raw(Model.PRODUCT_NAME)</h1>
+						<span>@Function.SetComma(Model.AMOUNT.ToString()!)￦</span>
+					</div>
+					<div class="explain">
+						<div>설명</div>
+						<p>@Html.Raw(Model.DESCRIPTION)</p>
+					</div>
+					<div class="buyCount">
+						<div>
+							@if (nftRemainsCount <= 100)
+							{
+								<div class="remaind">남은 수량<span class="remaind-count">@nftRemainsCount</span></div>
+							}
+						</div>
+						<div class="total">금액 : <strong id="areaTotalAmount">@Function.SetComma(Model.AMOUNT.ToString()!)￦</strong></div>
+					</div>
+					@if ((int)Model.NFT_REMAINS_COUNT! > 0)
+					{
+						<button type="button" class="g-btn pageLastBtn@((bool)isLogin! ? "" : " btnLoginModal")" @((bool)isLogin! ? "id=btnProductBuy" : "")>구매 / Purchase</button>
+					}
+					else
+					{
+						<button type="button" class="g-btn pageLastBtn" disabled>SOLD OUT</button>
+					}
+				</div>
+			</div>
+			<div class="imgUpload" style="height:auto">
+				<img src="@Model.DETAIL_IMAGE_URL" alt="detail img" style="width:100%;height:auto;" />
+			</div>
+		</div>
+	</div>
+</div>
+@if ((bool)isLogin!)
+{
+	<input type="hidden" name="productIdx" id="productIdx" value="@Model.PRODUCT_IDX" />
+	<input type="hidden" id="amount" value="@Model.AMOUNT" />
+}

@@ -1,0 +1,41 @@
+﻿@{
+	IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
+	string defaultErrorMessage = "System Error(Code: {0})";
+	int? productIdx = ViewData["productIdx"] as int?;
+	string? errorCode = ViewData["errorCode"] as string;
+	string message = string.Empty;
+
+	if (errorCode!.Equals("0001"))
+	{
+		message = "구매가 불가능한 상품 입니다.";
+	}
+	else if (errorCode!.Equals("0005") || errorCode!.Equals("0007") || errorCode!.Equals("1002") || errorCode!.Equals("1003"))
+	{
+		message = "SOLD OUT";
+	}
+	else
+	{
+		message = string.Format(defaultErrorMessage, errorCode);
+	}
+}
+<div id="detailBuyComplete">
+	<div class="g-container">
+		<div class="medium-containerCover">
+			<div class="container">
+				<h1 class="g-pageTitle">purchase fail</h1>
+				<div class="g-infoBox">
+					<div class="productInfo">
+						<div class="payTextBox">
+							<div>결제 실패</div>
+							<div>@message</div>
+						</div>
+					</div>
+				</div>
+				<div class="btnBox">
+					<button type="button" class="g-btn monotone" onclick="MovePath('/')">메인으로</button>
+					<button type="button" class="g-btn" onclick="MovePath('/Product/Info/@productIdx')">상세정보</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
